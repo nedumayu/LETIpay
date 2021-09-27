@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Leti pay</title>
+</head>
+<body>
+<h1>Вы авторизировались!</h1>
+<div style="white-space: pre">
+<p>     ∧＿∧
+    (｡･ω･｡)つ━☆・* 。
+    ⊂　　 ノ 　　・゜ + .
+     しーＪ　 　°。 + *´¨)
+                     .• ´¸.•* ´¨) ¸.•* ¨)
+                               (¸.•´(¸.•’ *</p>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выйти"/>
+</form>
+</body>
+</html>
