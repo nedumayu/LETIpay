@@ -1,7 +1,7 @@
 package org.example.letipay.controllers;
 
 import org.example.letipay.models.User;
-import org.example.letipay.repos.UserRepo;
+import org.example.letipay.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping()
-public class UserController {
+@RequestMapping("/api/test")
+public class TestController {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepository;
 
-    @GetMapping("/main")
+   @GetMapping("/main")
     public List<User> getUsers () {
-        return this.userRepo.findAll();
+        return this.userRepository.findAll();
+    }
+
+    @GetMapping("/all")
+    public String allAccess() {
+        return "Публичная страница";
     }
 
 }
