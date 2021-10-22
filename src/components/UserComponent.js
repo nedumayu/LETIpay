@@ -1,34 +1,32 @@
 import React from "react";
-import axios from "axios";
 import UserService from "../services/UserService";
 
 class UserComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             users: []
         }
     }
 
     componentDidMount() {
-        UserService.getUsers()
+        UserService.getUserBoard()
             .then(res => {
                 const users = res.data;
-                this.setState({ users });
+                this.setState({users});
             })
     }
 
-    render (){
+    render() {
         return (
-            <div>
-                <h1>Список пользователей</h1>
+            <div className="block">
+                <h3>Список пользователей</h3>
                 <table className="table">
                     <thead>
                     <tr>
                         <td>Id</td>
                         <td>Имя</td>
-                        <td>Фамилия</td>
                         <td>E-mail</td>
                     </tr>
                     </thead>
@@ -36,10 +34,9 @@ class UserComponent extends React.Component {
                     {
                         this.state.users.map(
                             user =>
-                                <tr key = {user.id}>
+                                <tr key={user.id}>
                                     <td>{user.id}</td>
-                                    <td>{user.firstName}</td>
-                                    <td>{user.lastName}</td>
+                                    <td>{user.username}</td>
                                     <td>{user.email}</td>
                                 </tr>
                         )
