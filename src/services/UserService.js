@@ -1,10 +1,14 @@
 import axios from "axios";
+import authHeader from './AuthHeader';
+
+const URL = 'http://localhost:8080/api/test/';
 
 class UserService {
 
-    getUsers(){
-        return axios.get('http://localhost:8080/main');
+    getUserBoard() {
+        return axios.get(URL + 'profile', { headers: authHeader() });
     }
+
 }
 
 export default new UserService()
