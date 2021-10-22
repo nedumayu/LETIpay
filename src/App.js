@@ -2,15 +2,18 @@ import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-function App() {
-    return (
-        <div>
-            <BrowserRouter>
-                <AppRouter/>
-            </BrowserRouter>
-        </div>
-    );
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <BrowserRouter>
+                    <AppRouter/>
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 export default App;
