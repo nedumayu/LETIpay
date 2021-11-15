@@ -19,10 +19,10 @@ public class TestController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/profile")
-    @PreAuthorize("hasRole('USER') or hasRole('LETI') or hasRole('ADMIN')")
-    public List<User> userAccess() {
-        return this.userRepository.findAll();
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminAccess() {
+        return "Admin page ";
     }
 
 }

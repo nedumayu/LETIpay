@@ -6,30 +6,39 @@ import isEmpty from "validator/es/lib/isEmpty";
 
 
 export default class Register extends Component {
-    constructor(props) {
+    /*constructor(props) {
         super(props);
         this.handleRegister = this.handleRegister.bind(this);
-        this.onChangeInput = this.onChangeInput.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);*/
 
-        this.state = {
-            username: "",
-            email: "",
-            password: "",
+        state = {
+            userInfo: {
+                username: "",
+                email: "",
+                password: "",
+                telephone: "",
+                groupNumber: "",
+            },
             successful: false,
             message: ""
         };
-    }
+    //}
 
-    onChangeInput(e) {
-        const {name, value} = e.target;
+    onChangeInput= (event) => {
+        const {name, value} = event.target;
         this.setState({
-            [name]: value
+            userInfo: {
+                ...this.state.userInfo,
+                [name]: value
+            }
         });
     }
 
-    handleRegister(e) {
-        e.preventDefault();
-        if (isEmpty(this.state.username) || isEmpty(this.state.password) || isEmpty(this.state.email)) {
+    handleRegister= (event) => {
+        event.preventDefault();
+        if (isEmpty(this.state.userInfo.username) || isEmpty(this.state.userInfo.password) ||
+            isEmpty(this.state.userInfo.email) ||
+            isEmpty(this.state.userInfo.telephone) || isEmpty(this.state.userInfo.groupNumber)) {
             const resMessage = "Заполните поля";
 
             this.setState({
@@ -39,21 +48,26 @@ export default class Register extends Component {
             return;
         }
 
-        AuthService.register(this.state.username, this.state.email, this.state.password)
+        AuthService.register(this.state.userInfo)
             .then(response => {
                     this.setState({
+                        userInfo: {
+                            username: "",
+                            email: "",
+                            password: "",
+                            telephone: "",
+                            groupNumber: "",
+                        },
                         message: response.data.message,
                         successful: true
                     });
-                },
-                error => {
+    }).catch((error)=>{
                     const resMessage = (error.response && error.response.data && error.response.data.message) || error.message;
                     this.setState({
                         successful: false,
                         message: resMessage
                     });
-                }
-            );
+                });
     }
 
     render() {
@@ -64,32 +78,52 @@ export default class Register extends Component {
                         {!this.state.successful && (
                             <div>
                                 <div>
-                                    <label htmlFor="username">Имя пользователя</label>
                                     <input
                                         type="text"
                                         name="username"
-                                        value={this.state.username}
+                                        value={this.state.userInfo.username}
                                         onChange={this.onChangeInput}
+                                        placeholder='ФИО'
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="email">Email</label>
                                     <input
                                         type="text"
-                                        name="email"
-                                        value={this.state.email}
+                                        name="groupNumber"
+                                        value={this.state.userInfo.groupNumber}
                                         onChange={this.onChangeInput}
+                                        placeholder='Номер группы'
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="password">Пароль</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={this.state.userInfo.email}
+                                        onChange={this.onChangeInput}
+                                        placeholder='E-mail'
+                                    />
+                                </div>
+
+                                <div>
+                                    <input
+                                        type="tel"
+                                        name="telephone"
+                                        value={this.state.userInfo.telephone}
+                                        onChange={this.onChangeInput}
+                                        placeholder='Телефон'
+                                    />
+                                </div>
+
+                                <div>
                                     <input
                                         type="password"
                                         name="password"
-                                        value={this.state.password}
+                                        value={this.state.userInfo.password}
                                         onChange={this.onChangeInput}
+                                        placeholder='Пароль'
                                     />
                                 </div>
 
@@ -101,7 +135,7 @@ export default class Register extends Component {
                             </div>
                         )}
                         {this.state.message && (
-                            <div style={{color: 'red'}}>
+                            <div>
                                 <div>{this.state.message}</div>
                             </div>
                         )}

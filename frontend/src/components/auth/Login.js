@@ -3,33 +3,40 @@ import React, {Component} from "react";
 import AuthService from "../services/AuthService";
 import {Link} from "react-router-dom";
 import isEmpty from "validator/es/lib/isEmpty";
+import LStorageUser from "../services/LStorageUser";
 
 
 export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.handleLogin = this.handleLogin.bind(this);
-        this.onChangeInput = this.onChangeInput.bind(this);
 
-        this.state = {
-            username: "",
-            password: "",
+
+        state = {
+            userInfo: {
+                email: "",
+                password: "",
+            },
             loading: false,
             message: ""
         };
-    }
 
-    onChangeInput(e) {
-        const {name, value} = e.target;
+    onChangeInput= (event) => {
+        const {name, value} = event.target;
+
         this.setState({
-            [name]: value
+            userInfo: {
+                ...this.state.userInfo,
+                [name]: value
+            }
         });
     }
 
+    componentDidMount() {
+        const currentUser = LStorageUser.getUser();
+        if (currentUser) this.setState({ redirect: "/user" });
+    }
 
-    handleLogin(e) {
-        e.preventDefault();
-        if (isEmpty(this.state.username) || isEmpty(this.state.password)) {
+    handleLogin= (event) => {
+        event.preventDefault();
+        if (isEmpty(this.state.userInfo.email) || isEmpty(this.state.userInfo.password)) {
             const resMessage = "Заполните поля";
             this.setState({
                 message: resMessage,
@@ -41,12 +48,14 @@ export default class Login extends Component {
             isLoading: true
         });
 
-        AuthService.login(this.state.username, this.state.password).then(
+        AuthService.login(this.state.userInfo).then(
             () => {
                 this.props.history.push("/profile");
                 window.location.reload();
-            },
-            error => {
+                this.setState({
+                    isLoading: false,
+                });
+            }).catch((error)=> {
                 let resMessage = (error.response && error.response.data && error.response.data.message) || error.message;
                 resMessage = resMessage === "Bad credentials" ? "Неверные данные" : "Заполните поля";
 
@@ -64,21 +73,21 @@ export default class Login extends Component {
                 <div className="window">
                     <form>
                         <div>
-                            <label htmlFor="username">Имя пользователя</label>
                             <input
                                 type="text"
-                                name="username"
-                                value={this.state.username}
+                                name="email"
+                                value={this.state.userInfo.email}
                                 onChange={this.onChangeInput}
+                                placeholder="E-mail"
                             />
                         </div>
                         <div>
-                            <label htmlFor="password">Пароль</label>
                             <input
                                 type="password"
                                 name="password"
-                                value={this.state.password}
+                                value={this.state.userInfo.password}
                                 onChange={this.onChangeInput}
+                                placeholder="Пароль"
                             />
                         </div>
                         <div>
@@ -88,7 +97,7 @@ export default class Login extends Component {
                         </div>
                         {this.state.message && (
                             <div>
-                                <div style={{color: 'red'}}>
+                                <div>
                                     {this.state.message}
                                 </div>
                             </div>
