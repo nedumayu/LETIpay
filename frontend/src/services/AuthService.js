@@ -1,37 +1,32 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:8080/api/auth/";
+import api from "./Api";
+import StorageService from "./StorageService";
 
 class AuthService {
-    login(username, password) {
-        return axios
-            .post(API_URL + "signin", {
-                username,
-                password
-            })
+    login(userData) {
+        return api.post('auth/signin', userData)
             .then(response => {
                 if (response.data.accessToken) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                }
-
-                return response.data;
+                    StorageService.setUser(response.data);
+                } return response.data;
             });
     }
 
     logout() {
-        localStorage.removeItem("user");
+        const userId = StorageService.getId();
+        api.post('auth/logout', {userId: userId})
+            .then(response => {
+                console.log(response)
+                StorageService.remove();
+            })
+            .catch(error =>{
+                console.error(error)
+                StorageService.remove();
+            })
+        window.location.reload();
     }
 
-    register(username, email, password) {
-        return axios.post(API_URL + "signup", {
-            username,
-            email,
-            password
-        });
-    }
-
-    getCurrentUser() {
-        return JSON.parse(localStorage.getItem('user'));;
+    register(userData) {
+        return api.post('auth/signup', userData);
     }
 }
 
