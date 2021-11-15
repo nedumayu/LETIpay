@@ -19,8 +19,8 @@ public class ProfileResponse {
     public ProfileResponse(User user) {
         this.username = user.getUsername();
         this.email = user.getEmail();
-        /*this.telephone = user.getTelephone();
-        this.groupNumber = user.getGroupNumber();*/
+        this.telephone = user.getTelephone();
+        this.groupNumber = user.getGroupNumber();
     }
 
     public ProfileResponse() {}

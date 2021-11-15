@@ -21,20 +21,20 @@ public class ProfileController {
     UserRepository userRepository;
 
     @GetMapping()
-    public ResponseEntity<?> getUserProfile() {
+    public ResponseEntity<?> getUserProfileInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        /*User user = userRepository
+        User user = userRepository
                 .findByEmail(authentication.getName())
                 .orElse(null);
         if(user != null) {
             return ResponseEntity.ok(
                     new ProfileResponse(user));
         }
-        else {*/
+        else {
             return ResponseEntity.badRequest()
                     .body(
                             new MessageResponse("User not found!")
                     );
         }
-    /*}*/
+    }
 }
