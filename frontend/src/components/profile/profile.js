@@ -1,80 +1,58 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import AuthService from "../services/AuthService";
-import EventBus from "../services/EventBus";
-import UserService from "../services/UserService";
-import LStorageUser from "../services/LStorageUser";
+import UserService from "../../services/UserService";
+import StorageService from "../../services/StorageService";
+import "./profile.css"
+import profileIcon from "../../assets/profile-icon-1.png"
+import plasticCard from "../../assets/plastic-card.png"
 
 
 export default class Profile extends Component {
     state = {
         userReady: false,
-        currentUser: { username: "" },
-        userInfo: null
+        currentUser: {username: ""},
+        userData: null
     }
 
     componentDidMount() {
-        const currentUser = LStorageUser.getUser();
-        UserService.getUserBoard(currentUser.id).then(
-            response => {
-                const userInfo = response.data;
-
+        const currentUser = StorageService.getUser();
+        UserService.getUserProfile(currentUser.id).then(
+            response => { const userData = response.data;
                 this.setState({
-                    userInfo: userInfo,
+                    userData: userData,
                     currentUser: currentUser,
                     userReady: true
                 });
             }
         );
-        /*if (!currentUser) this.setState({ redirect: "/home" });
-        this.setState({ currentUser: currentUser, userReady: true })*/
-
-        EventBus.on("logout", () => {
-            this.logOut();
-        });
-    }
-
-    componentWillUnmount() {
-        EventBus.remove("logout");
-    }
-
-    logOut() {
-        AuthService.logout();
-        this.setState({
-            currentUser: undefined,
-        });
     }
 
     render() {
-        const { userInfo } = this.state;
+        const {userData} = this.state;
         return (<div className="container">
-            {(this.state.userReady) ?
-
-            <div className="profile">
-                <h3>Профиль пользователя</h3>
-                <img className="avatar" src="" alt="Неопознанный Енот" width="100" height="100">
-                <div>
-                    ФИО:  {userInfo.username}
-                </div>
-
-                <div>
-                    E-mail: {userInfo.email}
-                </div>
-
-                <div>
-                    Телефон: {userInfo.telephone}
-                </div>
-
-                <div>
-                    Группа №{userInfo.groupNumber}
-                </div>
+                {(this.state.userReady) ?
+                    <div className="profile-card">
+                        <div className="profile-info">
+                            <img className="avatar" src={profileIcon} alt="Profile icon"/>
+                            <div className="info">
+                                <h4 className="name">{userData.username}</h4>
+                                <p><b>Группа</b> №{userData.groupNumber}</p>
+                                <p><b>E-mail:</b> {userData.email}</p>
+                                <p><b>Телефон:</b> {userData.telephone}</p>
+                            </div>
+                        </div>
+                            <div className="cards">
+                                <button className="my-button">Добавить карту</button>
+                                <div className="my-card">
+                                    <div className="card-img"><img className="card-icon" src={plasticCard} alt="Card icon"/></div>
+                                    <div className="card-info">
+                                        <h6 className="card-name">MasterCard Mass</h6>
+                                        <p className="card-number">**** 9037</p>
+                                    </div>
+                                    <div><p className="card-cost">1000 Р</p></div>
+                                </div>
+                            </div>
+                    </div> : null}
             </div>
-         : null}
-            {/*<Link to="/login" onClick={this.logOut}>
-            Выйти
-        </Link>*/}
-        </div>
-    );
-
+        );
     }
 }
