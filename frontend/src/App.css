@@ -1,36 +1,33 @@
-.block {
-    margin: 30px;
-
+.my-wrapper {
+    background-image: linear-gradient(to top, #fff1eb 0%, #a2dcf6 100%);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
 }
 
-
-
-label {
-    display: block;
+a {
     margin-top: 10px;
-}
-
-.window {
-    display: flex;
-    justify-content: center;
-    margin: 50px auto;
-    width: 300px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 20px;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
 }
 
 button {
+    color: black;
+    border: 1px solid transparent;
     margin: 15px 0;
-    border: 1px solid grey;
     border-radius: 5px;
     padding: 5px 15px;
     width: auto;
     background-color: aliceblue;
 }
 
-input {
-    border: 1px solid lightgray;
+.message {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background-color: aliceblue;
     border-radius: 5px;
-    padding: 5px;
 }
+
