@@ -5,32 +5,39 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="users")
+@Table( name= "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
      private String username;
 
     private String email;
 
     private String password;
+    private String telephone;
+    private String groupNumber;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
+    @JoinTable( name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User() {}
 
-    public User(String username, String email, String password) {
+
+    public User(String username, String email, String password,
+                String telephone,
+                String groupNumber) {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
+        this.telephone = telephone;
+        this.groupNumber = groupNumber;
 
+    }
+    public User() {}
     public Long getId() {
         return id;
     }
@@ -61,6 +68,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(String groupNumber) {
+        this.groupNumber = groupNumber;
     }
 
     public Set<Role> getRoles() {
