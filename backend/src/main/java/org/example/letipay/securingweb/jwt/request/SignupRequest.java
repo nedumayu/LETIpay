@@ -6,8 +6,10 @@ public class SignupRequest {
 
     private String username;
     private String email;
-    private Set<String> role;
     private String password;
+    private String telephone;
+    private String groupNumber;
+    private Set<String> role;
 
     public String getUsername() {
         return username;
@@ -31,6 +33,21 @@ public class SignupRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(String groupNumber) {
+        this.groupNumber = groupNumber;
     }
 
     public Set<String> getRole() {
