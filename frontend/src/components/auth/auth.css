@@ -1,0 +1,30 @@
+a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.my-form {
+    margin: 50px auto;
+    width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+button {
+    color: black;
+    border: 1px solid transparent;
+    margin: 15px 0;
+    border-radius: 5px;
+    padding: 5px 15px;
+    width: auto;
+    background-color: aliceblue;
+}
+
+.my-form input {
+    border: 1px solid transparent;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
