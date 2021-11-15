@@ -80,11 +80,12 @@ public class AuthController {
         }
 
 
-        User user = new User(signUpRequest.getUsername(),
+        User user = new User(
+                signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()),
-    signUpRequest.getTelephone(),
-            signUpRequest.getGroupNumber());
+                signUpRequest.getTelephone(),
+                signUpRequest.getGroupNumber());
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
