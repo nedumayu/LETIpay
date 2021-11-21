@@ -1,7 +1,7 @@
 import React from "react";
-import UserService from "../services/UserService";
+import UserService from "../../services/UserService";
 
-class UserComponent extends React.Component {
+class AdminTable extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,7 +11,7 @@ class UserComponent extends React.Component {
     }
 
     componentDidMount() {
-        UserService.getUserBoard()
+        UserService.getAdminBoard()
             .then(res => {
                 const users = res.data;
                 this.setState({users});
@@ -28,6 +28,8 @@ class UserComponent extends React.Component {
                         <td>Id</td>
                         <td>Имя</td>
                         <td>E-mail</td>
+                        <td>N group</td>
+                        <td>Telephone</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,6 +40,8 @@ class UserComponent extends React.Component {
                                     <td>{user.id}</td>
                                     <td>{user.username}</td>
                                     <td>{user.email}</td>
+                                    <td>{user.groupNumber}</td>
+                                    <td>{user.telephone}</td>
                                 </tr>
                         )
                     }
@@ -50,4 +54,4 @@ class UserComponent extends React.Component {
     }
 }
 
-export default UserComponent
+export default AdminTable
