@@ -32,7 +32,6 @@ instance.interceptors.response.use(
                             const {accessToken} = response.data;
                             JwtService.updateAccessToken(accessToken);
                         }).catch((_error) => {
-                            console.error(_error);
                             if (_error.response.status === 403 ) {
                                 StorageService.remove();
                                 window.location.reload();
