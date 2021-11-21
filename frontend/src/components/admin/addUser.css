@@ -1,0 +1,26 @@
+.my-form {
+    margin: auto;
+    width: 230px;
+}
+
+button {
+    color: black;
+    border: 1px solid transparent;
+    margin: 20px 0;
+    border-radius: 5px;
+    padding: 5px 15px;
+    width: auto;
+    background-color: aliceblue;
+}
+
+button:hover {
+    background-color: #6391a6;
+    color: white;
+}
+
+.my-form input {
+    border: 1px solid lightgray;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 7px;
+}
