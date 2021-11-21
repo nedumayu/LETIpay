@@ -60,7 +60,6 @@ public class AuthController {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
-                //.map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
@@ -120,6 +119,6 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("Вы зарегистрированы!"));
+        return ResponseEntity.ok(new MessageResponse("Успех!"));
     }
 }

@@ -3,11 +3,9 @@ package org.example.letipay.controllers;
 import org.example.letipay.models.User;
 import org.example.letipay.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +19,17 @@ public class TestController {
 
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
-    public String adminAccess() {
-        return "Admin page ";
+    public List<User> getUsers() {
+        return this.userRepository.findAll();
     }
 
+    @DeleteMapping("/admin/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    ResponseEntity<?> delete(@PathVariable Long id) {
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User is not found"));
+        userRepository.delete(user);
+        return ResponseEntity.ok().build();
+    }
 }
