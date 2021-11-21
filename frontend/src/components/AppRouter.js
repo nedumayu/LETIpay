@@ -5,6 +5,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register"
 import Profile from "./profile/profile";
 import AdminBoard from "./AdminBoard";
+import AdminPage from "./admin/AdminPage";
 
 const AppRouter = () => {
     return (
@@ -13,7 +14,8 @@ const AppRouter = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/admin" component={AdminBoard} />
+            {/*<Route exact path="/admin" component={AdminBoard} />*/}
+            <Route exact path="/admin" component={AdminPage} />
         </Switch>
     );
 };
