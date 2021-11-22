@@ -35,7 +35,7 @@ export default class Navbar extends Component {
             <div>
                 <nav className="navigation">
                     <Link to={"/"}>
-                        <img className="logo" src={Logo} alt="Logo picture"/>
+                        <img className="logo" src={Logo} alt="logo"/>
                     </Link>
                     <div className="navigation-nav">
                     {currentUser && (
@@ -53,7 +53,7 @@ export default class Navbar extends Component {
                                         username: currentUser.username
                                     }
                                 }} className="navigation-link">
-                                    Таблица
+                                    Пользователи
                                 </Link>
                             </li>
                     )}
