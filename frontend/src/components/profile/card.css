@@ -1,0 +1,22 @@
+.my-card {
+    width: 350px;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(211, 211, 211, 0.65);
+    display: grid;
+    grid-template-columns: 80px 180px 70px;
+    gap: 5px;
+}
+
+.card-icon {
+    width: 50px;
+}
+
+.card-cost {
+    align-self: end;
+}
+
+p.card-number {
+    margin:0;
+}
