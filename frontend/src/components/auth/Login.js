@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 
 import AuthService from "../../services/AuthService";
-import {Link} from "react-router-dom";
 import isEmpty from "validator/es/lib/isEmpty";
-import StorageService from "../../services/StorageService";
 import "./auth.css"
 
 
@@ -63,10 +61,10 @@ export default class Login extends Component {
             <div className="my-form">
                 <form>
                     <div>
-                        <input type="text" name="email" placeholder="E-mail"
+                        <input type="text" name="email" placeholder="E-mail" autoComplete="off"
                                value={this.state.userData.email}
                                onChange={this.onChangeInput}/>
-                        <input type="password" name="password" placeholder="Пароль"
+                        <input type="password" name="password" placeholder="Пароль" autoComplete="off"
                                value={this.state.userData.password}
                                onChange={this.onChangeInput}/>
                         <button onClick={this.handleLogin}>Войти</button>

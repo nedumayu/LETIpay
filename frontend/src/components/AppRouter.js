@@ -4,7 +4,6 @@ import Home from "./Home";
 import Login from "./auth/Login";
 import Register from "./auth/Register"
 import Profile from "./profile/profile";
-import AdminBoard from "./AdminBoard";
 import AdminPage from "./admin/AdminPage";
 
 const AppRouter = () => {

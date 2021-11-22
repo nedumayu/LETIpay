@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 import AuthService from "../../services/AuthService";
-import {Link} from "react-router-dom";
 import isEmpty from "validator/es/lib/isEmpty";
 import "./auth.css"
 
@@ -67,19 +66,19 @@ export default class Register extends Component {
                 <form>
                     {!this.state.successful && (
                         <div>
-                            <input type="text" name="username" placeholder='ФИО'
+                            <input type="text" name="username" placeholder='ФИО' autoComplete="off"
                                    value={this.state.userData.username}
                                    onChange={this.onChangeInput}/>
-                            <input type="text" name="groupNumber" placeholder='Номер группы'
+                            <input type="text" name="groupNumber" placeholder='Номер группы' autoComplete="off"
                                    value={this.state.userData.groupNumber}
                                    onChange={this.onChangeInput}/>
-                            <input type="email" name="email" placeholder='E-mail'
+                            <input type="email" name="email" placeholder='E-mail' autoComplete="off"
                                    value={this.state.userData.email}
                                    onChange={this.onChangeInput}/>
-                            <input type="tel" name="telephone" placeholder='Телефон'
+                            <input type="tel" name="telephone" placeholder='Телефон' autoComplete="off"
                                    value={this.state.userData.telephone}
                                    onChange={this.onChangeInput}/>
-                            <input type="password" name="password" placeholder='Пароль'
+                            <input type="password" name="password" placeholder='Пароль' autoComplete="off"
                                    value={this.state.userData.password}
                                    onChange={this.onChangeInput}/>
                             <button onClick={this.handleRegister}>Зарегистрироваться</button>
