@@ -1,7 +1,9 @@
 package org.example.letipay.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,10 +13,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-     private String username;
-
+    private String username;
     private String email;
-
     private String password;
     private String telephone;
     private String groupNumber;
@@ -33,9 +33,10 @@ public class User {
         this.password = password;
         this.telephone = telephone;
         this.groupNumber = groupNumber;
-
     }
+
     public User() {}
+
     public Long getId() {
         return id;
     }
@@ -91,5 +92,12 @@ public class User {
         this.roles = roles;
     }
 
+    /*public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }*/
 }
     
