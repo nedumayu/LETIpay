@@ -73,22 +73,22 @@ export default class AddNewCard extends Component {
                 <form>
                     <div>
                         <input type="text" name="cardName" placeholder='Название карты' autoComplete="off"
-                               value={this.state.cardData.cardName}
+                               className="my-input" value={this.state.cardData.cardName}
                                onChange={this.onChangeInput}/>
 
                         <input type="text" name="cardOwner" placeholder='Держатель карты' autoComplete="off"
-                               value={this.state.cardData.cardOwner}
+                               className="my-input" value={this.state.cardData.cardOwner}
                                onChange={this.onChangeInput}/>
 
                         <input type="text" name="cardNumber" placeholder='Номер карты' autoComplete="off"
-                               value={this.state.cardData.cardNumber}
+                               className="my-input" value={this.state.cardData.cardNumber}
                                onChange={this.onChangeInput}/>
 
                         <input type="text" name="endDate" placeholder='Срок окончания' autoComplete="off"
-                               value={this.state.cardData.endDate}
+                               className="my-input" value={this.state.cardData.endDate}
                                onChange={this.onChangeInput}/>
 
-                        <button onClick={this.handleAdd}>Добавить</button>
+                        <button className="my-button"  onClick={this.handleAdd}>Добавить</button>
                     </div>
                 </form>
             </div>

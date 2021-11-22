@@ -31,7 +31,7 @@ class AdminTable extends React.Component {
         return (
             <div>
                 <h3>Список пользователей</h3>
-                <table className="table">
+                <table className="mtable">
                     <thead>
                     <tr>
                         <td>Id</td>
@@ -50,7 +50,7 @@ class AdminTable extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.groupNumber}</td>
                                 <td>{user.telephone}</td>
-                                <td><button style={{margin: "5px"}} onClick={() => this.delete(user.id)}>Delete</button></td>
+                                <td><button className="delete-button" style={{margin: "5px"}} onClick={() => this.delete(user.id)}>Delete</button></td>
                             </tr>
                         )}
                     </tbody>

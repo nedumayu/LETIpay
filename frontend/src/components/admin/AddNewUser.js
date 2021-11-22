@@ -64,7 +64,7 @@ export default class AddNewUser extends Component {
 
     render() {
         return (
-            <div className="my-form">
+            <div className="form-add">
                 <form>
                     {!this.state.successful && (
                         <div>
@@ -83,7 +83,7 @@ export default class AddNewUser extends Component {
                             <input type="password" name="password" placeholder='Пароль' autoComplete="off"
                                    value={this.state.userData.password}
                                    onChange={this.onChangeInput}/>
-                            <button onClick={this.handleRegister}>Добавить</button>
+                            <button className="my-button" onClick={this.handleRegister}>Добавить</button>
                         </div>
                     )}
                     {this.state.message && (

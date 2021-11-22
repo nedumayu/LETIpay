@@ -67,19 +67,19 @@ export default class Register extends Component {
                     {!this.state.successful && (
                         <div>
                             <input type="text" name="username" placeholder='ФИО' autoComplete="off"
-                                   value={this.state.userData.username}
+                                   className="my-input" value={this.state.userData.username}
                                    onChange={this.onChangeInput}/>
                             <input type="text" name="groupNumber" placeholder='Номер группы' autoComplete="off"
-                                   value={this.state.userData.groupNumber}
+                                   className="my-input" value={this.state.userData.groupNumber}
                                    onChange={this.onChangeInput}/>
                             <input type="email" name="email" placeholder='E-mail' autoComplete="off"
-                                   value={this.state.userData.email}
+                                   className="my-input" value={this.state.userData.email}
                                    onChange={this.onChangeInput}/>
                             <input type="tel" name="telephone" placeholder='Телефон' autoComplete="off"
-                                   value={this.state.userData.telephone}
+                                   className="my-input" value={this.state.userData.telephone}
                                    onChange={this.onChangeInput}/>
                             <input type="password" name="password" placeholder='Пароль' autoComplete="off"
-                                   value={this.state.userData.password}
+                                   className="my-input" value={this.state.userData.password}
                                    onChange={this.onChangeInput}/>
                             <button onClick={this.handleRegister}>Зарегистрироваться</button>
                         </div>

@@ -61,11 +61,11 @@ export default class Login extends Component {
             <div className="my-form">
                 <form>
                     <div>
-                        <input type="text" name="email" placeholder="E-mail" autoComplete="off"
-                               value={this.state.userData.email}
+                        <input type="text" name="email" placeholder="E-mail" //autoComplete="off"
+                               className="my-input" value={this.state.userData.email}
                                onChange={this.onChangeInput}/>
                         <input type="password" name="password" placeholder="Пароль" autoComplete="off"
-                               value={this.state.userData.password}
+                               className="my-input" value={this.state.userData.password}
                                onChange={this.onChangeInput}/>
                         <button onClick={this.handleLogin}>Войти</button>
                     </div>
