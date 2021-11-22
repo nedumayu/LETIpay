@@ -1,4 +1,4 @@
-.my-form {
+.form-add {
     margin: auto;
     width: 230px;
 }
@@ -14,11 +14,11 @@ button {
 }
 
 button:hover {
-    background-color: #6391a6;
+    background-color: rgba(0, 0, 0, 0.05);
     color: white;
 }
 
-.my-form input {
+.form-add input {
     border: 1px solid lightgray;
     margin-top: 20px;
     border-radius: 5px;

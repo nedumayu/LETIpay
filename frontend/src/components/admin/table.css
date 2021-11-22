@@ -1,28 +1,46 @@
 .table-container {
     width: 1000px;
     margin: 20px auto;
-    padding: 30px;
+    padding: 40px;
     background-color: #f4f8fc;
     border-radius: 10px;
 }
 
-table {
-    margin-top: 30px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.mtable {
+    width: 100%;
+    margin: 30px 0;
 }
 
-table td {
+.mtable td {
     vertical-align: middle;
     text-align: left;
-    padding: 5px;
+    padding: 10px;
+    border-bottom: thin solid lightgray;
 }
 
-table thead {
+.mtable thead {
     background-color: #6391a6;
     color: white;
     padding: 10px;
+
 }
 
-table tbody tr:hover {
+.mtable tbody tr:hover {
     background-color: rgba(215, 241, 253, 0.37);
+}
+
+.delete-button {
+    color: #6391a6;
+    border: 1px solid #6391a6;
+}
+
+.delete-button:hover {
+    color: white;
+    background-color: #6391a6;
+}
+
+.my-button {
+    background-color: transparent;
+    color: #6391a6;
+    border: 1px solid #6391a6;
 }

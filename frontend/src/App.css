@@ -1,26 +1,26 @@
+body {
+    font-size: 18px;
+    color: black;
+}
+
+
 .my-wrapper {
     background-image: linear-gradient(to top, #fff1eb 0%, #a2dcf6 100%);
+    /*background-color: white;*/
     height: 100%;
     position: absolute;
     width: 100%;
     overflow: hidden;
 }
 
-a {
-    margin-top: 10px;
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 20px;
-}
-
 button {
-    color: black;
-    border: 1px solid transparent;
+    color: #ffffff;
+    border: 1px solid white;
     margin: 15px 0;
     border-radius: 5px;
     padding: 5px 15px;
     width: auto;
-    background-color: rgba(184, 200, 213, 0.73);
+    background-color: transparent;
 }
 
 .message {
@@ -29,5 +29,12 @@ button {
     padding: 20px;
     background-color: aliceblue;
     border-radius: 5px;
+}
+
+.carousel-indicators [data-bs-target] {
+    margin: 50px 20px 0 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 

@@ -15,16 +15,27 @@ a {
 button {
     color: black;
     border: 1px solid transparent;
-    margin: 15px 0;
+    margin: 20px 0;
     border-radius: 5px;
     padding: 5px 15px;
     width: auto;
     background-color: aliceblue;
 }
 
-.my-form input {
+.my-input:focus {
+    outline: none !important;
+    border-left: 1px solid #ffcdd6;
+}
+
+.my-input::placeholder {
+    color: #afafaf;
+    font-style: italic;
+}
+
+.my-input {
     border: 1px solid transparent;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 5px;
     padding: 5px;
 }
+

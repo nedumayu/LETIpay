@@ -20,3 +20,10 @@
 p.card-number {
     margin:0;
 }
+
+.my-form .my-input {
+    border: 1px solid lightgray;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 7px;
+}
