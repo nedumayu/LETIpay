@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 import Navbar from "./components/nav/navbar"
+import Footer from "./components/nav/footer"
 
 class App extends React.Component {
     render() {
@@ -13,7 +14,9 @@ class App extends React.Component {
 
                 <BrowserRouter>
                     <Navbar/>
-                    <AppRouter/>
+                    <div className="my-content"><AppRouter/></div>
+
+                    <Footer/>
                 </BrowserRouter>
             </div>
         );

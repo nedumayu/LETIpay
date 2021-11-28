@@ -1,0 +1,47 @@
+.my-footer {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 70px 0 70px;
+    background-color: #05336E;
+    height: 150px;
+    color: white;
+    font-size: 16px;
+    min-width: 800px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    margin-right: 100px;
+}
+
+.footer-logo {
+    height: 50px;
+}
+
+.footer-right div p {
+
+    margin: 0;
+    padding: 0;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.footer-politics {
+    font-size: 12px;
+    color: #697B92;
+}
+
+.footer-lan-en {
+    color: #697B92;
+}
