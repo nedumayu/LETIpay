@@ -1,40 +1,19 @@
 import React from 'react';
-import FirstSlide from "../assets/first-slide.png"
-import SecondSlide from "../assets/second-slide.png"
-import ThirdSlide from "../assets/third-slide.png"
-
-import {Carousel} from "react-bootstrap";
+import BankingAnimation from "./animations/BankingAnimation";
 
 class Home extends React.Component {
     render() {
         return (
-            <div style={{margin: "20px auto", width: "90%"}}>
-                <Carousel slade>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={FirstSlide}
-                            alt="First slide"
-                        />
-
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={SecondSlide}
-                            alt="Second slide"
-                        />
-
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={ThirdSlide}
-                            alt="Third slide"
-                        />
-                    </Carousel.Item>
-                </Carousel>
-
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh'}}>
+                <div>
+                    <h1 style={{fontWeight: "800", fontSize: "50px", marginBottom: "50px"}} >Добро пожаловать в <span style={{color: "#347CE1"}}>LETIpay</span>!</h1>
+                    <p>Сервис, разработанный специально для студентов ЛЭТИ</p>
+                    <p>Приложение позволит легко и быстро совершать переводы<br/>
+                        и производить своевременную оплату обучения</p>
+                </div>
+                <div style={{width: "500px"}}>
+                    <BankingAnimation/>
+                </div>
             </div>
         );
     }
