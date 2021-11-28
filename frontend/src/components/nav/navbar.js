@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import StorageService from "../../services/StorageService";
 import AuthService from "../../services/AuthService";
 import "./navbar.css"
-import Logo from "../../assets/logo.png"
+import Logo from "../../assets/logo2.png"
 
 export default class Navbar extends Component {
     state = {
@@ -34,18 +34,21 @@ export default class Navbar extends Component {
         return (
             <div>
                 <nav className="navigation">
-                    <Link to={"/"}>
-                        <img className="logo" src={Logo} alt="logo"/>
-                    </Link>
+
+                        <Link to={"/"} className="logo-container">
+                            <img className="logo" src={Logo} alt="logo"/>
+                            <p className="logo-title">Единый портал для студентов СПБГЭТУ</p>
+                        </Link>
+
                     <div className="navigation-nav">
-                    {currentUser && (
+                        {currentUser && (
                             <li className="nav-item">
                                 <Link to={"/profile"} className="navigation-link">
                                     Профиль
                                 </Link>
                             </li>
-                    )}
-                    {showAdmin && (
+                        )}
+                        {showAdmin && (
                             <li className="nav-item">
                                 <Link to={{
                                     pathname: "/admin",
@@ -56,30 +59,29 @@ export default class Navbar extends Component {
                                     Пользователи
                                 </Link>
                             </li>
-                    )}
-                    {currentUser ? (
+                        )}
+                        {currentUser ? (
                             <li className="nav-item">
                                 <a href="/login" className="navigation-link" onClick={this.logOut}>
                                     Выход
                                 </a>
                             </li>
-                    ) : (
-                        <div className="log-in-row">
-                            <li className="nav-item">
-                                <Link to={"/login"} className="navigation-link">
-                                    Вход
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/register"} className="navigation-link">
-                                    Регистрация
-                                </Link>
-                            </li>
-                        </div>
-                    )}
+                        ) : (
+                            <div className="log-in-row">
+                                <li className="nav-item">
+                                    <Link to={"/login"} className="navigation-link">
+                                        Вход
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/register"} className="navigation-link">
+                                        Регистрация
+                                    </Link>
+                                </li>
+                            </div>
+                        )}
                     </div>
                 </nav>
-                <hr/>
             </div>
         );
     }
