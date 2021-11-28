@@ -1,41 +1,54 @@
 .profile-card {
-    width: 600px;
+    width: 70%;
     height: auto;
-    margin: 20px auto;
+    margin: 60px auto;
     padding: 30px;
-    background-color: #f4f8fc;
     border-radius: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 100px;
+
 }
 
 .profile-info {
     display: grid;
     gap: 30px;
     grid-template-columns: 1fr 2fr;
+    margin-right: 40px;
 }
 
 .avatar {
     border: 1px solid lightgray;
     width: 200px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .name {
     margin-bottom: 30px;
 }
 
+.info-table {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.info-field-name {
+    color: #C3C2C2;
+    text-transform: uppercase;
+}
+
 .cards {
     margin: 10px 0 0 0;
 }
 
-.my-button {
-    width: auto;
-    margin: 20px 0;
+.add-card-button {
+    color: #05336E;
+    background-color: white;
     border-radius: 5px;
-    background-color: rgba(184, 200, 213, 0.73);
 }
 
-.my-button:hover {
-    color: #ffffff;
-    background-color: #6391a6;
+.add-card-button:hover {
+    background-color:#05336E;
+    color: white;
 }

@@ -12,7 +12,7 @@ const CardsList = () => {
         <div className="cards">
             {(!hasCard) ?
                 <div></div> :
-                <button className="my-button"
+                <button className="add-card-button"
                         onClick={() => setModalActive(true)}>
                     Добавить карту
                 </button>}

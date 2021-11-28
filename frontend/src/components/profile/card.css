@@ -1,12 +1,35 @@
 .my-card {
-    width: 350px;
-    height: auto;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(211, 211, 211, 0.65);
+    width: 310px;
+    height: 180px;
+    padding: 20px;
+    border-radius: 30px;
     display: grid;
-    grid-template-columns: 80px 180px 70px;
-    gap: 5px;
+    grid-template-columns: 200px 50px;
+    gap: 20px;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    color: white;
+}
+
+.my-card:hover{
+    transform: rotateY(180deg);
+    transition: 1s;
+}
+
+.my-card:not(hover){
+    transform: rotateY(0deg);
+    transition: 500ms;
+}
+
+.card-icon-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-icon {
@@ -14,16 +37,20 @@
 }
 
 .card-cost {
-    align-self: end;
+    margin:0;
+    font-size: 20px;
+}
+.card-date {
+    margin:0;
+    font-size: 14px;
+}
+
+.card-owner {
+    margin:0;
 }
 
 p.card-number {
     margin:0;
-}
+    font-size: 14px;
 
-.my-form .my-input {
-    border: 1px solid lightgray;
-    margin-top: 20px;
-    border-radius: 5px;
-    padding: 7px;
 }

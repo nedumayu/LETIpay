@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import isEmpty from "validator/es/lib/isEmpty";
 import UserService from "../../services/UserService";
+import "./card.css"
 
 export default class AddNewCard extends Component {
     state = {

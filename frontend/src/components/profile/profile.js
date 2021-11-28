@@ -29,16 +29,25 @@ export default class Profile extends Component {
 
     render() {
         const {userData} = this.state;
-        return (<div className="container">
+        return (<div>
                 {(this.state.userReady) ?
                     <div className="profile-card">
                         <div className="profile-info">
                             <img className="avatar" src={profileIcon} alt="Profile icon"/>
                             <div className="info">
-                                <h4 className="name">{userData.username}</h4>
-                                <p><b>Группа №</b>{userData.groupNumber}</p>
-                                <p><b>E-mail:</b> {userData.email}</p>
-                                <p><b>Телефон:</b> {userData.telephone}</p>
+                                <h3 className="name">{userData.username}</h3>
+                                <div className="info-table">
+                                <div className="info-field-name">
+                                    <p>Группа</p>
+                                    <p>E-mail</p>
+                                    <p>Телефон</p>
+                                </div>
+
+                                <div><p>{userData.groupNumber}</p>
+                                    <p>{userData.email}</p>
+                                    <p>{userData.telephone}</p>
+                                </div>
+                                </div>
                             </div>
                         </div>
                         <CardsList/>
