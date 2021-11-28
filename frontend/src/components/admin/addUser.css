@@ -3,24 +3,8 @@
     width: 230px;
 }
 
-button {
-    color: black;
-    border: 1px solid transparent;
+.add-new-user-button {
     margin: 20px 0;
-    border-radius: 5px;
-    padding: 5px 15px;
     width: auto;
-    background-color: aliceblue;
 }
 
-button:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: white;
-}
-
-.form-add input {
-    border: 1px solid lightgray;
-    margin-top: 20px;
-    border-radius: 5px;
-    padding: 7px;
-}

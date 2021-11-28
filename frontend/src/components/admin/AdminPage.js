@@ -9,7 +9,7 @@ const AdminPage = () => {
 
     return(
         <div className="table-container">
-            <button className="my-button" onClick={() => setModalActive(true)}>
+            <button className="add-user-button" onClick={() => setModalActive(true)}>
                 Добавить пользователя
             </button>
             <Modal active={modalActive} setActive={setModalActive}>

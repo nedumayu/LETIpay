@@ -1,8 +1,7 @@
 .table-container {
-    width: 1000px;
+    width: 1400px;
     margin: 20px auto;
     padding: 40px;
-    background-color: #f4f8fc;
     border-radius: 10px;
 }
 
@@ -19,28 +18,23 @@
 }
 
 .mtable thead {
-    background-color: #6391a6;
+    background-color: rgba(5, 51, 110, 0.71);
     color: white;
     padding: 10px;
 
 }
 
 .mtable tbody tr:hover {
-    background-color: rgba(215, 241, 253, 0.37);
+    background-color: rgba(200, 202, 204, 0.37);
 }
 
 .delete-button {
-    color: #6391a6;
-    border: 1px solid #6391a6;
+    color: #05336E;
+    background-color: transparent;
+    border-radius: 5px;
 }
 
 .delete-button:hover {
     color: white;
-    background-color: #6391a6;
-}
-
-.my-button {
-    background-color: transparent;
-    color: #6391a6;
-    border: 1px solid #6391a6;
+    background-color: #05336E;
 }

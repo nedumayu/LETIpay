@@ -1,26 +1,28 @@
 body {
-    font-size: 18px;
+    font-size: 16px;
     color: black;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+
+    letter-spacing: 0.05em;
 }
 
+a {
+    text-decoration: none;
+}
 
 .my-wrapper {
-    background-image: linear-gradient(to top, #fff1eb 0%, #a2dcf6 100%);
-    /*background-color: white;*/
+    display: flex;
+    flex-direction: column;
+    background-color: white;
     height: 100%;
     position: absolute;
     width: 100%;
     overflow: hidden;
 }
 
-button {
-    color: #ffffff;
-    border: 1px solid white;
-    margin: 15px 0;
-    border-radius: 5px;
-    padding: 5px 15px;
-    width: auto;
-    background-color: transparent;
+.my-content {
+    flex: 1 0 auto;
 }
 
 .message {
@@ -31,10 +33,40 @@ button {
     border-radius: 5px;
 }
 
-.carousel-indicators [data-bs-target] {
-    margin: 50px 20px 0 20px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+input:focus {
+    outline: none !important;
+    border: 1px solid #E7E7E7;
+    background: white;
 }
 
+input::placeholder {
+    color: #828282;
+    font-size: 15px;
+}
+
+input {
+    font-weight: 600;
+    width: 100%;
+    border: 1px solid white;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: #F2F2F2;
+}
+
+input:hover {
+    background-color: #E7E7E7;
+}
+
+button {
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background-color: #05336E;
+    border-color: transparent;
+}
+
+button:hover {
+    background-color: #3872BD;
+}

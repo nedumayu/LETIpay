@@ -83,7 +83,7 @@ export default class AddNewUser extends Component {
                             <input type="password" name="password" placeholder='Пароль' autoComplete="off"
                                    value={this.state.userData.password}
                                    onChange={this.onChangeInput}/>
-                            <button className="my-button" onClick={this.handleRegister}>Добавить</button>
+                            <button className="add-new-user-button" onClick={this.handleRegister}>Добавить</button>
                         </div>
                     )}
                     {this.state.message && (
