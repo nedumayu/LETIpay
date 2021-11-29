@@ -17,6 +17,8 @@ export default class Navbar extends Component {
             this.setState({
                 currentUser: user,
                 showAdmin: user?.roles.includes("ROLE_ADMIN"),
+                showLeti: user?.roles.includes("ROLE_LETI"),
+                showUser: user?.roles.includes("ROLE_USER")
             });
         }
     }
@@ -25,29 +27,50 @@ export default class Navbar extends Component {
         AuthService.logout();
         this.setState({
             showAdmin: false,
+            showLeti: false,
+            showUser: false,
             currentUser: undefined,
         });
     }
 
     render() {
-        const {currentUser, showAdmin} = this.state;
+        const {currentUser, showAdmin, showLeti, showUser} = this.state;
         return (
             <div>
                 <nav className="navigation">
 
-                        <Link to={"/"} className="logo-container">
-                            <img className="logo" src={Logo} alt="logo"/>
-                            <p className="logo-title">Единый портал для студентов СПБГЭТУ</p>
-                        </Link>
+                    <Link to={"/"} className="logo-container">
+                        <img className="logo" src={Logo} alt="logo"/>
+                        <p className="logo-title">Единый портал для студентов СПБГЭТУ</p>
+                    </Link>
 
                     <div className="navigation-nav">
                         {currentUser && (
-                            <li className="nav-item">
-                                <Link to={"/profile"} className="navigation-link">
-                                    Профиль
-                                </Link>
-                            </li>
+                            <div className="log-in-row">
+                                <li className="nav-item">
+                                    <Link to={"/profile"} className="navigation-link">
+                                        Профиль
+                                    </Link>
+                                </li>
+
+                            </div>
                         )}
+                        {showUser && <div>
+                            <div className="log-in-row">
+                                <li className="nav-item">
+                                    <Link to={"/payment"} className="navigation-link">
+                                        Оплатить
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/transfer"} className="navigation-link">
+                                        Перевести
+                                    </Link>
+                                </li>
+                            </div>
+                        </div>
+                        }
+
                         {showAdmin && (
                             <li className="nav-item">
                                 <Link to={{
@@ -60,6 +83,19 @@ export default class Navbar extends Component {
                                 </Link>
                             </li>
                         )}
+                        {showLeti && (
+                            <li className="nav-item">
+                                <Link to={{
+                                    pathname: "/account",
+                                    state: {
+                                        username: currentUser.username
+                                    }
+                                }} className="navigation-link">
+                                    Платежи
+                                </Link>
+                            </li>
+                        )}
+
                         {currentUser ? (
                             <li className="nav-item">
                                 <a href="/login" className="navigation-link" onClick={this.logOut}>

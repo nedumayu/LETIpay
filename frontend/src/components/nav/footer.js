@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./footer.css"
 import BlueLogo from "../../assets/bluelogo.png"
+import {Link} from "react-router-dom";
 
 
 export default class Navbar extends Component {
@@ -15,10 +16,15 @@ export default class Navbar extends Component {
                 </div>
                 <div className="footer-right">
                     <div className="footer-adress"><p>Санкт-Петербург, ул. Профессора Попова, 5</p>
-                        <h6>Не получается войти в аккаунт?</h6>
+                        <p><Link to="/register" className="auth">Не получается войти в аккаунт?</Link></p>
                     </div>
-                    <div className="footer-politics"><p>Политика обработки и защиты персональных данных</p>
-                        <p>Пользовательское соглашение</p>
+                    <div>
+                        <a className="footer-politics" href="https://etu.ru/assets/files/sotrudniku/Prikazi/politika-v-otnoshenii-personalnyh-dannyh.pdf">
+                            Политика обработки и защиты персональных данных
+                        </a><br/>
+                        <a className="footer-politics" href="https://etu.ru/assets/files/sotrudniku/Prikazi/politika-konfidencialnosti-spbgetu-leti.pdf">
+                            Пользовательское соглашение
+                        </a>
                     </div>
                 </div>
             </div>
