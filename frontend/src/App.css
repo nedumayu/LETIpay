@@ -45,7 +45,6 @@ input::placeholder {
 }
 
 input {
-    font-weight: 600;
     width: 100%;
     border: 1px solid white;
     margin-top: 20px;
@@ -59,7 +58,6 @@ input:hover {
 }
 
 button {
-    font-weight: 600;
     color: #ffffff;
     border-radius: 5px;
     padding: 5px 15px;
