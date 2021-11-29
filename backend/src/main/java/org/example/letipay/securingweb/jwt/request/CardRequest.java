@@ -5,7 +5,7 @@ public class CardRequest {
     private String cardOwner;
     private String cardNumber;
     private String endDate;
-    private String cardCheck;
+    private int cardCheck;
 
     public String getCardName() {
         return cardName;
@@ -39,11 +39,11 @@ public class CardRequest {
         this.endDate = endDate;
     }
 
-    public String getCardCheck() {
+    public int getCardCheck() {
         return cardCheck;
     }
 
-    public void setCardCheck(String cardCheck) {
+    public void setCardCheck(int cardCheck) {
         this.cardCheck = cardCheck;
     }
 }

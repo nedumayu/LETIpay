@@ -7,9 +7,9 @@ public class CardResponse {
     private String cardOwner;
     private String cardNumber;
     private String endDate;
-    private String cardCheck;
+    private int cardCheck;
 
-    public CardResponse(String cardName, String cardOwner, String cardNumber, String endDate, String cardCheck) {
+    public CardResponse(String cardName, String cardOwner, String cardNumber, String endDate, int cardCheck) {
         this.cardName = cardName;
         this.cardOwner = cardOwner;
         this.cardNumber = cardNumber;
@@ -59,11 +59,11 @@ public class CardResponse {
         this.endDate = endDate;
     }
 
-    public String getCardCheck() {
+    public int getCardCheck() {
         return cardCheck;
     }
 
-    public void setCardCheck(String cardCheck) {
+    public void setCardCheck(int cardCheck) {
         this.cardCheck = cardCheck;
     }
 }
