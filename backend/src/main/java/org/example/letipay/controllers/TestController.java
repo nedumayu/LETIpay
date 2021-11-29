@@ -14,22 +14,20 @@ import java.util.List;
 @RequestMapping("/api/test")
 public class TestController {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<User> getUsers() {
-        return this.userRepository.findAll();
+    /*@GetMapping("/account")
+    @PreAuthorize("hasRole('LETI')")
+    public String testAccount() {
+        return "Accountant Page of ";
     }
-
-    @DeleteMapping("/admin/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    ResponseEntity<?> delete(@PathVariable Long id) {
-
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User is not found"));
-        userRepository.delete(user);
-        return ResponseEntity.ok().build();
+    @GetMapping("/payment")
+    @PreAuthorize("hasRole('USER')")
+    public String testPay() {
+        return "Payment Page of ";
     }
+    @GetMapping("/transfer")
+    @PreAuthorize("hasRole('USER')")
+    public String testTransfer() {
+        return "Transfer Page of ";
+    }*/
+
 }

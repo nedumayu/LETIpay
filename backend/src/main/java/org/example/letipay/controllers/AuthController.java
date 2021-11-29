@@ -119,6 +119,6 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("Успех!"));
+        return ResponseEntity.ok(new MessageResponse("Вы зерегистрировались! Перейдите на вкладку Вход"));
     }
 }
