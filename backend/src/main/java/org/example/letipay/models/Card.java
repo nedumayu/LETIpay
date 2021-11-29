@@ -1,6 +1,8 @@
 package org.example.letipay.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table( name= "cards")
@@ -13,13 +15,16 @@ public class Card {
     private String cardOwner;
     private String cardNumber;
     private String endDate;
-    private String cardCheck;
+    private int cardCheck;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private User user;
 
-    public Card(String cardName, String cardOwner, String cardNumber, String endDate, String cardCheck) {
+    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private Set<Payment> payment = new HashSet<>();
+
+    public Card(String cardName, String cardOwner, String cardNumber, String endDate, int cardCheck) {
         this.cardName = cardName;
         this.cardOwner = cardOwner;
         this.cardNumber = cardNumber;
@@ -69,11 +74,11 @@ public class Card {
         this.endDate = endDate;
     }
 
-    public String getCardCheck() {
+    public int getCardCheck() {
         return cardCheck;
     }
 
-    public void setCardCheck(String cardCheck) {
+    public void setCardCheck(int cardCheck) {
         this.cardCheck = cardCheck;
     }
 
@@ -83,5 +88,13 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Payment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Set<Payment> payment) {
+        this.payment = payment;
     }
 }
