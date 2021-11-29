@@ -6,11 +6,11 @@ class UserService {
     }
 
     getAdminBoard() {
-        return api.get( 'test/admin');
+        return api.get( 'admin');
     }
 
     deleteUser(id) {
-        return api.delete(`test/admin/${id}`, {data: {id: id}})
+        return api.delete(`admin/${id}`, {data: {id: id}})
     }
 
     addCard(cardData) {
@@ -21,6 +21,13 @@ class UserService {
         return api.get('profile/card', { params: { id: id} });
     }
 
+    addPayment(payData) {
+        return api.post( 'payment', payData);
+    }
+
+    getAccountantInfo() {
+        return api.get( 'account');
+    }
 
 }
 
