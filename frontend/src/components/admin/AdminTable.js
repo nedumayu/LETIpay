@@ -4,7 +4,7 @@ import UserService from "../../services/UserService";
 class AdminTable extends React.Component {
 
     state = {
-        users: []
+        users: [],
     }
 
     componentDidMount() {
@@ -29,9 +29,10 @@ class AdminTable extends React.Component {
 
     render() {
         return (
+
             <div>
                 <h3 style={{marginTop: "20px"}}>Список пользователей</h3>
-                <table className="mtable">
+                <table className="admin-table">
                     <thead>
                     <tr>
                         <td>Id</td>

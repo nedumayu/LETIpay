@@ -1,30 +1,41 @@
 .table-container {
-    width: 1400px;
+    width: 1200px;
     margin: 20px auto;
     padding: 40px;
     border-radius: 10px;
 }
 
-.mtable {
+.admin-table {
     width: 100%;
     margin: 30px 0;
 }
 
-.mtable td {
+.admin-table td {
     vertical-align: middle;
     text-align: left;
-    padding: 10px;
+    padding: 15px;
     border-bottom: thin solid lightgray;
 }
 
-.mtable thead {
-    background-color: rgba(5, 51, 110, 0.71);
+.admin-table thead {
+    background-color: #3872BD;
     color: white;
     padding: 10px;
-
 }
 
-.mtable tbody tr:hover {
+thead td:first-child{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-color: transparent;
+}
+
+thead td:last-child{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-color: transparent;
+}
+
+.admin-table tbody tr:hover {
     background-color: rgba(200, 202, 204, 0.37);
 }
 
