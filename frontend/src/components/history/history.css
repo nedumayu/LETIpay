@@ -1,0 +1,29 @@
+.payObject {
+    width: 500px;
+    //border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 2px 6px rgba(0, 0, 0, 0.05), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    margin: 20px;
+}
+
+.payContainer {
+    padding: 10px;
+}
+
+.payName {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.paySum {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.payDate {
+    font-size: 13px;
+    color: grey;
+}
