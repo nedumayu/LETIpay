@@ -8,6 +8,8 @@ import AdminPage from "./admin/AdminPage";
 import AccountantPage from "./accountant/AccountantPage"
 import Payment from "./pay/payment"
 import Transfer from "./pay/transfer"
+import HistoryContainer from "./history/HistoryContainer";
+import ExamplePay from "./accountant/ExamplePay"
 
 const AppRouter = () => {
     return (
@@ -20,6 +22,7 @@ const AppRouter = () => {
             <Route exact path="/admin" component={AdminPage} />
             <Route exact path="/payment" component={Payment} />
             <Route exact path="/transfer" component={Transfer} />
+            <Route exact path="/history" component={HistoryContainer} />
             <Redirect to="/home"/>
         </Switch>
     );
