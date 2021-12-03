@@ -1,7 +1,10 @@
 package org.example.letipay.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table( name= "payments")
@@ -15,12 +18,21 @@ public class Payment {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "card_id", referencedColumnName = "user_id")
+    @JsonBackReference
     private Card card;
 
     public Payment(String payName, int paySum, String payDate) {
         this.payName = payName;
         this.paySum = paySum;
         this.payDate = payDate;;
+    }
+
+    public Payment(Long id, String payName, int paySum, String payDate, Card card) {
+        this.id = id;
+        this.payName = payName;
+        this.paySum = paySum;
+        this.payDate = payDate;
+        this.card = card;
     }
 
     public Payment() {}

@@ -1,5 +1,8 @@
 package org.example.letipay.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,10 +22,16 @@ public class Card {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private Set<Payment> payment = new HashSet<>();
+
+    @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonManagedReference
+    private Set<Transfer> transfer = new HashSet<>();
 
     public Card(String cardName, String cardOwner, String cardNumber, String endDate, int cardCheck) {
         this.cardName = cardName;
