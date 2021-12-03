@@ -1,8 +1,10 @@
 package org.example.letipay.controllers;
 
 import org.example.letipay.models.Card;
+import org.example.letipay.models.Payment;
 import org.example.letipay.models.User;
 import org.example.letipay.repos.CardRepository;
+import org.example.letipay.repos.PaymentRepository;
 import org.example.letipay.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +20,6 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private CardRepository cardRepository;
-
     @GetMapping()
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
@@ -33,11 +32,7 @@ public class AdminController {
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User is not found"));
-        Card card = cardRepository.findByUser(user)
-                .orElseThrow(() ->
-                        new RuntimeException("Card is not found"));
         userRepository.delete(user);
-        cardRepository.delete(card);
         return ResponseEntity.ok().build();
     }
 }
