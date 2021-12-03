@@ -1,5 +1,7 @@
 package org.example.letipay.securingweb.jwt.request;
 
+import java.util.Date;
+
 public class PayRequest {
     private String payName;
     private int paySum;
