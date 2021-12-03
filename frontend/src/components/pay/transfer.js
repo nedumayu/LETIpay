@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UserService from "../../services/UserService";
-import StorageService from "../../services/StorageService";
 import isEmpty from "validator/es/lib/isEmpty";
 
 export default class Transfer extends Component {
@@ -8,11 +7,10 @@ export default class Transfer extends Component {
         transData: {
             transTelephone: "",
             transSum: "",
-            /*cardNumber: "",
-            endDate: "",
-            cardCheck: ""*/
+            transDate: ""
         },
-        message: ""
+        message: "",
+        successful: false
     };
 
     onChangeInput = (event) => {
@@ -32,34 +30,35 @@ export default class Transfer extends Component {
             const resMessage = "Заполните поля";
             this.setState({
                 message: resMessage,
+                successful: false
             });
             return;
         }
 
-        /*const Check = Math.round(Math.random() * (50000 - 1000) + 1000);
+        const date = new Date().toLocaleString().slice(0,-3);
 
         await this.setState({
             transData: {
                 ...this.state.transData,
-                cardCheck: Check,
+                transDate: date,
             }
-        });*/
+        });
 
-        UserService.postTransfer(this.state.transData).then(response => {
+        UserService.addTransfer(this.state.transData).then(response => {
             this.setState({
                 transData: {
                     transTelephone: "",
                     transSum: "",
-                    /*cardNumber: "",
-                    endDate: ""*/
                 },
+                message: response.data.message,
+                successful: true
             });
-            this.props.setActive(false);
-            window.location.reload();
+
         }).catch((error) => {
-            const resMessage = error.response?.data?.message || error.message;
+            const resMessage = (error.response && error.response.data && error.response.data.message) || error.message;
             this.setState({
-                message: resMessage
+                message: resMessage,
+                successful: false
             });
         });
     }
@@ -68,6 +67,7 @@ export default class Transfer extends Component {
         return (
             <div className="my-form">
                 <form>
+                    {!this.state.successful && (
                     <div>
                         <input type="text" name="transTelephone" placeholder='Номер телефона получателя' autoComplete="off"
                                value={this.state.transData.transTelephone}
@@ -76,7 +76,10 @@ export default class Transfer extends Component {
                                value={this.state.transData.transSum}
                                onChange={this.onChangeInput}/>
                         <button className="add-new-user-button" onClick={this.handleTrans}>Перевести</button>
-                    </div>
+                    </div>)}
+                    {this.state.message && (
+                        <div className="message">{this.state.message}</div>
+                    )}
                 </form>
             </div>
         );

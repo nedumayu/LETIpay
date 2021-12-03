@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import UserService from "../../services/UserService";
 import isEmpty from "validator/es/lib/isEmpty";
-import "./pay.css"
-import StorageService from "../../services/StorageService";
 
 export default class Payment extends Component {
     state = {
@@ -10,7 +8,6 @@ export default class Payment extends Component {
             payName: "",
             paySum: "",
             payDate: "",
-            card: ""
         },
         message: "",
         successful: false,
@@ -38,18 +35,15 @@ export default class Payment extends Component {
             return;
         }
 
-        const date = new Date();
-        //const user = StorageService.getId();
+        const date = new Date().toLocaleString().slice(0,-3);;
 
         await this.setState({
             payData: {
                 ...this.state.payData,
                 payDate: date,
-                //payUser: user
             }
         });
 
-        console.log(this.state.payData);
 
         UserService.addPayment(this.state.payData).then(response => {
             this.setState({
