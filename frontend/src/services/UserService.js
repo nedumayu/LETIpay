@@ -29,6 +29,17 @@ class UserService {
         return api.get( 'account');
     }
 
+    addTransfer(transData) {
+        return api.post('transfer', transData);
+    }
+
+    getUserPay() {
+        return api.get( 'history/payment');
+    }
+
+    getUserTrans() {
+        return api.get( 'history/transfer');
+    }
 }
 
 export default new UserService()
