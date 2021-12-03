@@ -46,8 +46,7 @@ export default class Login extends Component {
                     isLoading: false,
                 });
             }).catch((error) => {
-                let resMessage = (error.response && error.response.data && error.response.data.message) || error.message;
-                resMessage = resMessage === "Bad credentials" ? "Неверные данные" : "Заполните поля";
+                let resMessage = error?.response?.data?.message === "Bad credentials" ? "Неверные данные" : "Заполните поля";
                 this.setState({
                     loading: false,
                     message: resMessage

@@ -6,8 +6,9 @@
     display: grid;
     grid-template-columns: 200px 50px;
     gap: 20px;
-    background-image: url('../../assets/Card_12.png');
-    background-position: center;
+    /*background-image: url('../../assets/Card_12.png');
+    background-position: center;*/
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
     color: white;
 }
 
