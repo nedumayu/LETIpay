@@ -2,9 +2,10 @@ package org.example.letipay.controllers;
 
 
 import org.example.letipay.models.Payment;
+import org.example.letipay.repos.CardRepository;
 import org.example.letipay.repos.PaymentRepository;
+import org.example.letipay.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,15 @@ public class AccountController {
     @Autowired
     PaymentRepository paymentRepository;
 
-    @PreAuthorize("hasRole('LETI')")
+    @Autowired
+    CardRepository cardRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping()
-    public List<Payment> getPayments() {
-        return this.paymentRepository.findAll();
+    public List<Payment> getPaymentInfos() {
+        return this.paymentRepository.findAllPayments();
     }
+
 }
