@@ -67,21 +67,49 @@ export default class Navbar extends Component {
                                         Перевести
                                     </Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link to={"/history"} className="navigation-link">
+                                        История операций
+                                    </Link>
+                                </li>
                             </div>
                         </div>
                         }
 
                         {showAdmin && (
-                            <li className="nav-item">
-                                <Link to={{
-                                    pathname: "/admin",
-                                    state: {
-                                        username: currentUser.username
-                                    }
-                                }} className="navigation-link">
-                                    Пользователи
-                                </Link>
-                            </li>
+                            <div className="log-in-row">
+                                <li className="nav-item">
+                                    <Link to={"/payment"} className="navigation-link">
+                                        Оплатить
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/transfer"} className="navigation-link">
+                                        Перевести
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/history"} className="navigation-link">
+                                        История операций
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={{
+                                        pathname: "/admin",
+                                        state: {
+                                            username: currentUser.username
+                                        }
+                                    }} className="navigation-link">
+                                        Пользователи
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/account"} className="navigation-link">
+                                        Платежи
+                                    </Link>
+                                </li>
+
+                            </div>
                         )}
                         {showLeti && (
                             <li className="nav-item">
