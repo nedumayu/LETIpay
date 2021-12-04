@@ -29,7 +29,6 @@ class AdminTable extends React.Component {
 
     render() {
         return (
-
             <div>
                 <h3 style={{marginTop: "20px"}}>Список пользователей</h3>
                 <table className="admin-table">
