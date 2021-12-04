@@ -5,6 +5,7 @@ import org.example.letipay.models.Payment;
 import org.example.letipay.repos.CardRepository;
 import org.example.letipay.repos.PaymentRepository;
 import org.example.letipay.repos.UserRepository;
+import org.example.letipay.securingweb.service.exceptions.PaymentsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,11 @@ public class AccountController {
 
     @GetMapping()
     public List<Payment> getPaymentInfos() {
-        return this.paymentRepository.findAllPayments();
+        if (paymentRepository.findAllPayments().isEmpty()) {
+            throw new PaymentsNotFoundException("There are no payments yet");
+        } else {
+            return this.paymentRepository.findAllPayments();
+        }
     }
 
 }

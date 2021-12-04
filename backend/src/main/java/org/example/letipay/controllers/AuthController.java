@@ -12,12 +12,13 @@ import org.example.letipay.securingweb.jwt.request.SignupRequest;
 import org.example.letipay.securingweb.jwt.response.JwtResponse;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
 import org.example.letipay.securingweb.service.UserDetailsImpl;
+import org.example.letipay.securingweb.service.exceptions.RoleException;
+import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -73,9 +74,7 @@ public class AuthController {
 
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("E-mail уже используется"));
+            throw new UserNotFoundException("E-mail уже используется");
         }
 
 
@@ -91,26 +90,26 @@ public class AuthController {
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Роль не найдена"));
+                    .orElseThrow(() -> new RoleException("Role is not found"));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
                         Role adminRole = roleRepository.findByName(RoleEnum.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Роль не найдена"));
+                                .orElseThrow(() -> new RoleException("Role is not found"));
                         roles.add(adminRole);
 
                         break;
                     case "mod":
                         Role modRole = roleRepository.findByName(RoleEnum.ROLE_LETI)
-                                .orElseThrow(() -> new RuntimeException("Роль не найдена"));
+                                .orElseThrow(() -> new RoleException("Role is not found"));
                         roles.add(modRole);
 
                         break;
                     default:
                         Role userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
-                                .orElseThrow(() -> new RuntimeException("Роль не найдена"));
+                                .orElseThrow(() -> new RoleException("Role is not found"));
                         roles.add(userRole);
                 }
             });

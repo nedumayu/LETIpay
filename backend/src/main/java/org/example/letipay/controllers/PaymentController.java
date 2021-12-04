@@ -10,6 +10,8 @@ import org.example.letipay.repos.UserRepository;
 import org.example.letipay.securingweb.jwt.request.PayRequest;
 import org.example.letipay.securingweb.jwt.response.CardResponse;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
+import org.example.letipay.securingweb.service.exceptions.CardNotFoundException;
+import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,16 +44,16 @@ public class PaymentController {
     public ResponseEntity<?> addPayment(@Valid @RequestBody PayRequest payRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(authentication.getName())
-                .orElse(null);
+                .orElseThrow(() -> new UserNotFoundException("User with that email is not found!"));
         Card card = cardRepository.findByUser(user)
-                .orElseThrow(() ->
-                        new RuntimeException("Card is not found"));
+                .orElseThrow(() -> new CardNotFoundException("Card is not found"));
 
         Payment payment = new Payment(
                 payRequest.getPayName(),
                 payRequest.getPaySum(),
                 payRequest.getPayDate()
         );
+
         if (card.getCardCheck() < payment.getPaySum()) {
             return ResponseEntity.badRequest()
                     .body(new MessageResponse("Недостаточно средств"));

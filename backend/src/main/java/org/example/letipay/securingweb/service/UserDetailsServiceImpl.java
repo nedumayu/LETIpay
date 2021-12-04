@@ -2,6 +2,7 @@ package org.example.letipay.securingweb.service;
 
 import org.example.letipay.models.User;
 import org.example.letipay.repos.UserRepository;
+import org.example.letipay.securingweb.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

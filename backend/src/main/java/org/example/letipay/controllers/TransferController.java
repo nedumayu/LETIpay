@@ -12,6 +12,7 @@ import org.example.letipay.repos.UserRepository;
 import org.example.letipay.securingweb.jwt.request.PayRequest;
 import org.example.letipay.securingweb.jwt.request.TransferRequest;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
+import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -40,7 +41,7 @@ public class TransferController {
     public ResponseEntity<?> addPayment(@Valid @RequestBody TransferRequest transferRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user1 = userRepository.findByEmail(authentication.getName())
-                .orElse(null);
+                .orElseThrow(() -> new UserNotFoundException("User with that email is not found!"));
         Card card1 = cardRepository.findByUser(user1).orElseThrow(() ->
                         new RuntimeException("Card is not found")); //карта того кто переводит
 

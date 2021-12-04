@@ -6,6 +6,7 @@ import org.example.letipay.models.User;
 import org.example.letipay.repos.CardRepository;
 import org.example.letipay.repos.PaymentRepository;
 import org.example.letipay.repos.UserRepository;
+import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,13 +24,16 @@ public class AdminController {
     @GetMapping()
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
-        return this.userRepository.findAll();
+        if (userRepository.findAll().isEmpty()) {
+            throw new UserNotFoundException("There are no users yet");
+        } else {
+            return this.userRepository.findAll();
+        }
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<?> delete(@PathVariable Long id) {
-
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User is not found"));
         userRepository.delete(user);

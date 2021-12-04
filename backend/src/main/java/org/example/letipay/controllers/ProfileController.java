@@ -8,6 +8,8 @@ import org.example.letipay.securingweb.jwt.request.CardRequest;
 import org.example.letipay.securingweb.jwt.response.CardResponse;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
 import org.example.letipay.securingweb.jwt.response.ProfileResponse;
+import org.example.letipay.securingweb.service.exceptions.CardNotFoundException;
+import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -29,18 +31,13 @@ public class ProfileController {
     @GetMapping()
     public ResponseEntity<?> getUserProfileInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userRepository
-                .findByEmail(authentication.getName())
+        User user = userRepository.findByEmail(authentication.getName())
                 .orElse(null);
         if(user != null) {
-            return ResponseEntity.ok(
-                    new ProfileResponse(user));
+            return ResponseEntity.ok(new ProfileResponse(user));
         }
         else {
-            return ResponseEntity.badRequest()
-                    .body(
-                            new MessageResponse("User not found!")
-                    );
+            throw new UserNotFoundException("User not found!");
         }
     }
 
@@ -48,7 +45,7 @@ public class ProfileController {
     public ResponseEntity<?> addCard(@Valid @RequestBody CardRequest cardRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(authentication.getName())
-                .orElse(null);
+                .orElseThrow(() -> new UserNotFoundException("User is not found"));
         Card card = new Card(
           cardRequest.getCardName(),
           cardRequest.getCardOwner(),
@@ -67,10 +64,9 @@ public class ProfileController {
     public ResponseEntity<?> showCard() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(authentication.getName())
-                .orElse(null);
+                .orElseThrow(() -> new UserNotFoundException("User is not found"));
         Card card = cardRepository.findByUser(user)
-                .orElseThrow(() ->
-                        new RuntimeException("Card is not found"));
+                .orElseThrow(() -> new CardNotFoundException("Card is not found"));
 
         return ResponseEntity.ok(new CardResponse(card));
     }
