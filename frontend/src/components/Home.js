@@ -11,7 +11,7 @@ class Home extends React.Component {
                     <p>Приложение позволит легко и быстро совершать переводы<br/>
                         и производить своевременную оплату обучения</p>
                 </div>
-                <div style={{width: "500px"}}>
+                <div style={{width: "600px"}}>
                     <BankingAnimation/>
                 </div>
             </div>
