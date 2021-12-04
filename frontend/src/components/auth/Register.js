@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import AuthService from "../../services/AuthService";
 import isEmpty from "validator/es/lib/isEmpty";
 import "./auth.css"
+import RegisterValid from "../../services/validation/RegisterValid";
 
 export default class Register extends Component {
     state = {
@@ -29,10 +30,11 @@ export default class Register extends Component {
 
     handleRegister = (event) => {
         event.preventDefault();
-        if (isEmpty(this.state.userData.username) || isEmpty(this.state.userData.password) ||
-            isEmpty(this.state.userData.email) ||
-            isEmpty(this.state.userData.telephone) || isEmpty(this.state.userData.groupNumber)) {
-            const resMessage = "Заполните поля";
+
+        let res = RegisterValid.signupValid(this.state.userData);
+
+        if (res.result) {
+            const resMessage = res.message;
             this.setState({
                 message: resMessage,
                 successful: false
