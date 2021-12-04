@@ -40,6 +40,12 @@ class UserService {
     getUserTrans() {
         return api.get( 'history/transfer');
     }
+
+    getRoles() {
+        return api.get('/roles');
+    }
+
+
 }
 
 export default new UserService()

@@ -8,6 +8,10 @@ class StorageService {
 
     getId() { return this.exist ? this.user?.id : null; }
 
+    isExist() {
+        return this.exist;
+    }
+
     setUser(data) {
         localStorage.setItem("user", JSON.stringify(data));
         this.user = data;
