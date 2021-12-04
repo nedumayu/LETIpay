@@ -1,8 +1,10 @@
 import React from "react";
 import UserService from "../../services/UserService";
 import "./accountantTable.css"
+import RoleService from "../../services/RoleService";
 
 class AccountantPage extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -21,8 +23,13 @@ class AccountantPage extends React.Component {
 
 
     render() {
+        const isAccountant = RoleService.hasRole("LETI");
+        const isAdmin = RoleService.hasRole("ADMIN")
+
         return (
             <div className="table-container">
+                {(isAccountant || isAdmin) &&
+                <div>
                 <h3 style={{marginTop: "20px"}}>Список платежей</h3>
                 <table className="account-table">
                     <thead>
@@ -45,6 +52,7 @@ class AccountantPage extends React.Component {
                         )}
                     </tbody>
                 </table>
+                </div>}
             </div>
         )
     }
