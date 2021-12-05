@@ -7,9 +7,13 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",
+            nullable = false, updatable = false, unique = true)
     private Integer id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "name", length = 15,
+            nullable = false, unique = true)
     private RoleEnum name;
 
     public Role() {}
