@@ -11,9 +11,19 @@ import java.util.Date;
 public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",
+            nullable = false, updatable = false, unique = true)
     private Long id;
+
+    @Column(name = "trans_telephone", length = 20,
+            nullable = false)
     private String transTelephone;
+
+    @Column(name = "trans_date")
     private String transDate;
+
+    @Column(name = "trans_sum", length = 10,
+            nullable = false)
     private int transSum;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
