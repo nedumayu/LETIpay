@@ -11,9 +11,19 @@ import java.util.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",
+            nullable = false, updatable = false, unique = true)
     private Long id;
+
+    @Column(name = "pay_name", length = 20,
+            nullable = false)
     private String payName;
+
+    @Column(name = "pay_sum", length = 10,
+            nullable = false)
     private int paySum;
+
+    @Column(name = "pay_date")
     private String payDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
