@@ -39,7 +39,7 @@ export default class AddNewCard extends Component {
             return;
         }
 
-        const Check = Math.round(Math.random() * (50000 - 1000) + 1000);
+        const Check = Math.round(Math.random() * (100000 - 1000) + 1000);
 
         await this.setState({
             cardData: {
@@ -74,7 +74,7 @@ export default class AddNewCard extends Component {
                 <form>
                     <div>
                         <input type="text" name="cardName" placeholder='Название карты' autoComplete="off"
-                               className="my-input" value={this.state.cardData.cardName}
+                               className="my-input" value={this.state.cardData.cardName.toLowerCase()}
                                onChange={this.onChangeInput}/>
 
                         <input type="text" name="cardOwner" placeholder='Держатель карты' autoComplete="off"
