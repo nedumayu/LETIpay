@@ -1,8 +1,7 @@
 import Lottie from "lottie-react";
-import Banking from "../../assets/banking.json"
 
-const BankingAnimation = () => {
-    return <Lottie animationData={Banking} />;
+const Animation = (picture) => {
+    return <Lottie animationData={picture} />;
 };
 
-export default BankingAnimation;
+export default Animation;
