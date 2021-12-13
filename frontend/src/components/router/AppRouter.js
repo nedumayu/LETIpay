@@ -1,14 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Redirect, Route, Switch} from "react-router-dom";
-import Home from "../Home";
-import Login from "../auth/Login";
-import Register from "../auth/Register"
-import Profile from "../profile/profile";
-import AdminPage from "../admin/AdminPage";
-import AccountantPage from "../accountant/AccountantPage"
-import Payment from "../pay/payment"
-import Transfer from "../pay/transfer"
-import HistoryContainer from "../history/HistoryContainer";
+import {Route, Switch} from "react-router-dom";
 import StorageService from "../../services/StorageService";
 import UserService from "../../services/UserService";
 import {authRoutes, publicRoutes} from "./routes";
@@ -28,7 +19,6 @@ const AppRouter = () => {
         }
 
     }, [isAuth])
-
 
     return (
         <Switch>

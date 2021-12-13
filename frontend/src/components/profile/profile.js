@@ -42,7 +42,6 @@ export default class Profile extends Component {
                                     <p>E-mail</p>
                                     <p>Телефон</p>
                                 </div>
-
                                 <div><p>{userData.groupNumber}</p>
                                     <p>{userData.email}</p>
                                     <p>{userData.telephone}</p>
