@@ -39,7 +39,7 @@ class AdminTable extends React.Component {
                         <td>E-mail</td>
                         <td>Номер группы</td>
                         <td>Телефон</td>
-                        <td>Action</td>
+                        <td>Действие</td>
                     </tr>
                     </thead>
                     <tbody>{
@@ -50,7 +50,7 @@ class AdminTable extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.groupNumber}</td>
                                 <td>{user.telephone}</td>
-                                <td><button className="delete-button" style={{margin: "5px"}} onClick={() => this.delete(user.id)}>Delete</button></td>
+                                <td><button className="delete-button" style={{margin: "5px"}} onClick={() => this.delete(user.id)}>Удалить</button></td>
                             </tr>
                         )}
                     </tbody>
