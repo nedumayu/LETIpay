@@ -15,7 +15,6 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Navbar/>
                     <div className="my-content"><AppRouter/></div>
-
                     <Footer/>
                 </BrowserRouter>
             </div>
