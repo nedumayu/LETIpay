@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 import AuthService from "../../services/AuthService";
-import isEmpty from "validator/es/lib/isEmpty";
 import "./auth.css"
 import RegisterValid from "../../services/validation/RegisterValid";
 
