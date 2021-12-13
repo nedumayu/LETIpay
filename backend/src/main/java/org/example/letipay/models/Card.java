@@ -25,7 +25,7 @@ public class Card {
             nullable = false)
     private String cardNumber;
 
-    @Column(name = "end_date" length = 5,
+    @Column(name = "end_date", length = 5,
             nullable = false)
     private String endDate;
 

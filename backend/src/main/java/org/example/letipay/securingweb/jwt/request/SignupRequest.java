@@ -3,25 +3,11 @@ package org.example.letipay.securingweb.jwt.request;
 import java.util.Set;
 
 public class SignupRequest {
-    @NotBlank(message = "username should not be blank")
-    @Size(min = 5, max = 50, message = "name should be more than 5 and less than 50 characters")
+
     private String username;
-
-    @NotBlank(message = "email should not be blank")
-    @Size(min = 5, max = 30, message = "email should be more than 5 and less than 30 characters")
-    @Email(message = "email should have @")
     private String email;
-
-    @NotBlank(message = "password should not be blank")
-    @Size(min = 5, max = 100, message = "password should be more than 5 and less than 100 characters")
     private String password;
-
-    @NotBlank(message = "telephone should not be blank")
-    @Size(min = 10, max = 20, message = "telephone should be more than 10 and less than 20 characters")
     private String telephone;
-
-    @Size(min = 1, max = 6, message = "group number should be more than 1 and less than 6 characters")
-
     private String groupNumber;
     private Set<String> role;
 
