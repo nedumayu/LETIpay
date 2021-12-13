@@ -1,42 +1,59 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import UserService from "../../services/UserService";
 import "./history.css"
+import EmptyAnimation from "../animations/EmptyAnimation";
+import {Spinner} from "react-bootstrap";
 
-class PayHistory extends React.Component {
+const PayHistory = () => {
 
-    state = {
-        pays: [],
-    }
+    const [pays, setPays] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    componentDidMount() {
-        UserService.getUserPay()
-            .then(res => {
-                const pays = res.data;
-                this.setState({pays});
+    useEffect(() => {
+        fetchingPayments()
+
+    }, [])
+
+    const fetchingPayments = () => {
+        UserService.getUserPay().then(
+            response => {
+                const paysInfo = response.data;
+                setPays(paysInfo);
+                setIsLoading(false);
+            },
+            error => {
+                console.error(error);
             })
     }
 
+    return (
 
-    render() {
-        return (
+        isLoading ?
+            <div style={{width: "20px", margin: "100px auto"}}>
+                <Spinner animation="border" variant="primary"/>
+            </div> :
             <div className="payContainer">
-                <h3 style={{margin: "20px"}}>Платежи</h3>
-                <div>
-                    {this.state.pays.map(pay =>
-                        <div className="payObject" key={pay.id}>
-                            <div style={{paddingRight: "10px"}}>
-                                <p className="payName">Оплата за {pay.payName}</p>
-                                <p className="paySum">{pay.paySum} ₽</p>
-                            </div>
-                            <p className="payDate">{pay.payDate}</p>
+                {pays.length !== 0 ?
+                    <div>
+                        <h3 style={{margin: "20px"}}>Платежи</h3>
+                        <div>
+                            {pays.map(pays =>
+                                <div className="payObject" key={pays.id}>
+                                    <div style={{paddingRight: "10px"}}>
+                                        <p className="payName">Оплата за {pays.payName}</p>
+                                        <p className="paySum">{pays.paySum} ₽</p>
+                                    </div>
+                                    <p className="payDate">{pays.payDate}</p>
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
+                    </div> :
+                    <div>
+                        <h3 style={{margin: "20px", textAlign: "center"}}>Платежи не найдены</h3>
+                        <div style={{width: "400px"}}><EmptyAnimation/></div>
+                    </div>}
             </div>
-        )
-    }
-
-
-}
+    );
+};
 
 export default PayHistory;
