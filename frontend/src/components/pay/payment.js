@@ -70,9 +70,13 @@ export default class Payment extends Component {
                     <form>
                         {!this.state.successful && (
                             <div>
-                                <input type="text" name="payName" placeholder='Название платежа' autoComplete="off"
-                                       value={this.state.payData.payName}
-                                       onChange={this.onChangeInput}/>
+                                <div className="select" style={{marginTop: "20px"}}>
+                                <select name="payName" value={this.state.payData.payName} onChange={this.onChangeInput}>
+                                    <option value="" hidden disabled selected>Выберите тип оплаты</option>
+                                    <option value="Обучение" onChange={this.onChangeInput}>Обучение</option>
+                                    <option value="Общежитие" onChange={this.onChangeInput}>Общежитие</option>
+                                </select>
+                                </div>
                                 <input type="text" name="paySum" placeholder='Сумма платежа' autoComplete="off"
                                        value={this.state.payData.paySum}
                                        onChange={this.onChangeInput}/>

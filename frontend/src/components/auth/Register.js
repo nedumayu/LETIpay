@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import AuthService from "../../services/AuthService";
 import "./auth.css"
 import RegisterValid from "../../services/validation/RegisterValid";
