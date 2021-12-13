@@ -48,7 +48,7 @@ export default class AddNewUser extends Component {
                     telephone: "",
                     groupNumber: "",
                 },
-                message: response.data.message,
+                message: "Пользователь зарегистрирован",
                 successful: true
             });
             setTimeout(()=> {
