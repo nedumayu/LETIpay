@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 import AuthService from "../../services/AuthService";
-import isEmpty from "validator/es/lib/isEmpty";
 import "./addUser.css"
 import RegisterValid from "../../services/validation/RegisterValid";
 
@@ -52,8 +51,10 @@ export default class AddNewUser extends Component {
                 message: response.data.message,
                 successful: true
             });
-            this.props.setActive(false);
-            window.location.reload();
+            setTimeout(()=> {
+                this.props.setActive(false);
+                window.location.reload();
+            }, 1000)
         }).catch((error) => {
             const resMessage = (error.response && error.response.data && error.response.data.message) || error.message;
             this.setState({
