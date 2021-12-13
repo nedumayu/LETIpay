@@ -39,11 +39,7 @@ public class HistoryController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException("User is not found"));
-        if (paymentRepository.findPaymentByCard(user).isEmpty()) {
-            throw new PaymentsNotFoundException("Payments are not found");
-        } else {
-            return this.paymentRepository.findPaymentByCard(user);
-        }
+        return this.paymentRepository.findPaymentByCard(user);
     }
 
     @GetMapping("/transfer")
@@ -51,11 +47,7 @@ public class HistoryController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException("User is not found"));
-        if (transferRepository.findTransferByCard(user).isEmpty()) {
-            throw new TransfersNotFoundException("Transfers are not found");
-        } else {
-            return this.transferRepository.findTransferByCard(user);
-        }
+        return this.transferRepository.findTransferByCard(user);
     }
 
 }

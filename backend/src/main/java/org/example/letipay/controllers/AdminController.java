@@ -24,11 +24,7 @@ public class AdminController {
     @GetMapping()
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> getUsers() {
-        if (userRepository.findAll().isEmpty()) {
-            throw new UserNotFoundException("There are no users yet");
-        } else {
             return this.userRepository.findAll();
-        }
     }
 
     @DeleteMapping("/{id}")
