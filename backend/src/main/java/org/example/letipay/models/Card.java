@@ -11,13 +11,25 @@ import java.util.Set;
 @Table( name= "cards")
 public class Card {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "card_name", length = 30,
+            nullable = false)
     private String cardName;
+
+    @Column(name = "card_owner", length = 30,
+            nullable = false)
     private String cardOwner;
+
+    @Column(name = "card_number", length = 19,
+            nullable = false)
     private String cardNumber;
+
+    @Column(name = "end_date" length = 5,
+            nullable = false)
     private String endDate;
+
+    @Column(name = "card_check")
     private int cardCheck;
 
     @OneToOne(fetch = FetchType.LAZY)

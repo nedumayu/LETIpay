@@ -1,9 +1,20 @@
 package org.example.letipay.securingweb.jwt.request;
 
 public class CardRequest {
+    @NotBlank(message = "card name should not be blank")
+    @Size(min = 3, max = 30, message = "gender should be more than 3 and less than 30 characters")
     private String cardName;
+
+    @NotBlank(message = "card owner should not be blank")
+    @Size(min = 5, max = 30, message = "gender should be more than 5 and less than 30 characters")
     private String cardOwner;
+
+    @NotBlank(message = "card number should not be blank")
+    @Size(min = 16, max = 19, message = "gender should be more than 16 and less than 20 characters")
     private String cardNumber;
+
+    @NotBlank(message = "end date should not be blank")
+    @Size(min = 4, max = 5, message = "gender should be less than 6 characters")
     private String endDate;
     private int cardCheck;
 
