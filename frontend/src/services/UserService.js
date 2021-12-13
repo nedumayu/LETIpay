@@ -45,7 +45,9 @@ class UserService {
         return api.get('/roles');
     }
 
-
+    addGrant(grantData) {
+        return api.post('account/grants', grantData);
+    }
 }
 
 export default new UserService()

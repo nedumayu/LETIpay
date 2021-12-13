@@ -29,14 +29,14 @@ instance.interceptors.response.use(
                     instance.post("/auth/refreshtoken", {
                         refreshToken: JwtService.getRefreshToken()
                     }).then(response => {
-                            const {accessToken} = response.data;
-                            JwtService.updateAccessToken(accessToken);
-                        }).catch((_error) => {
-                            if (_error.response.status === 403 ) {
-                                StorageService.remove();
-                                window.location.reload();
-                            }
-                        });
+                        const {accessToken} = response.data;
+                        JwtService.updateAccessToken(accessToken);
+                    }).catch((_error) => {
+                        if (_error.response.status === 403 ) {
+                            StorageService.remove();
+                            window.location.reload();
+                        }
+                    });
                     return instance(config);
                 } catch (err) {
                     return Promise.reject(err);
