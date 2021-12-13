@@ -1,118 +1,62 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import UserService from "../../services/UserService";
 import "./accountantTable.css"
+import {PaymentTable} from "./PaymentTable"
 import RoleService from "../../services/RoleService";
+import Error from "../Error"
+import {Spinner} from "react-bootstrap";
+import Modal from "../modal/Modal";
+import AddGrants from "./AddGrants";
 
-class AccountantPage extends React.Component {
+const AccountantPage = () => {
 
+    const [payments, setPayments] = useState([]);
+    const isAccountant = RoleService.hasRole("LETI");
+    const isAdmin = RoleService.hasRole("ADMIN");
+    const [isLoading, setIsLoading] = useState(true);
+    const [modalActive, setModalActive] = useState(false);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            payments: []
-        }
-    }
+    useEffect(() => {
+        fetchingData()
 
+    }, [])
 
-    componentDidMount() {
-        UserService.getAccountantInfo()
-            .then(res => {
-                this.setState({payments: res.data});
-            })
-    }
-
-
-    render() {
-        const isAccountant = RoleService.hasRole("LETI");
-        const isAdmin = RoleService.hasRole("ADMIN")
-
-        return (
-            <div className="table-container">
-                {(isAccountant || isAdmin) &&
-                <div>
-                <h3 style={{marginTop: "20px"}}>Список платежей</h3>
-                <table className="account-table">
-                    <thead>
-                    <tr>
-                        <td>Id</td>
-                        <td>Название</td>
-                        <td>Сумма</td>
-                        <td>Дата</td>
-                    </tr>
-                    </thead>
-                    <tbody>{
-                        this.state.payments.map(
-                            payment =>
-                            <tr key={payment.id}>
-                                <td>{payment.id}</td>
-                                <td>{payment.payName}</td>
-                                <td>{payment.paySum}</td>
-                                <td>{payment.payDate}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                </div>}
-            </div>
-        )
-    }
-    /*state = {
-        cardData: []
-    }
-
-    componentDidMount() {
-        UserService.getAccountantInfo()
-            .then(res => {
-                const cardData = res.data;
-                this.setState({cardData});
-            })
-    }
-
-
-    delete = (id) => {
-        UserService.deleteUser(id).then(
+    const fetchingData = () => {
+        UserService.getAccountantInfo().then(
             response => {
-                window.location.reload()
+                const payInfo = response.data.payments;
+                setPayments(payInfo)
+                setIsLoading(false);
             },
             error => {
-                console.log(error.response)
+                console.error(error);
             }
         )
     }
 
-    render() {
-        console.log(this.state.cardData);
-        return (
-            <div>
-                <h3 style={{marginTop: "20px"}}>Список пользователей</h3>
-                <table className="mtable">
-                    <thead>
-                    <tr>
 
-                        <td>card name</td>
-                        <td>owner</td>
-                        <td>Номер card</td>
-                        <td>end date</td>
-                        <td>check</td>
-                        <td>Action</td>
-                    </tr>
-                    </thead>
-                    <tbody>{
-                        this.state.cardData.map(cardData =>
-                            <tr key={cardData.cardName}>
+    return (
+        (isAccountant || isAdmin) ?
+            <div className="table-container">
+                <button className="add-user-button"
+                        onClick={() => setModalActive(true)}>
+                    Начислить стипендию
+                </button>
 
-                                <td>{cardData.cardName}</td>
-                                <td>{cardData.cardOwner}</td>
-                                <td>{cardData.cardNumber}</td>
-                                <td>{cardData.endDate}</td>
-                                <td>{cardData.cardCheck}</td>
-                                <td><button className="delete-button" style={{margin: "5px"}} onClick={() => this.delete(cardData.id)}>Delete</button></td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <Modal active={modalActive} setActive={setModalActive}>
+                    <AddGrants setActive={setModalActive}/>
+                </Modal>
+
+                {isLoading ?
+                <div style={{width: "20px", margin: "200px auto"}}>
+                    <Spinner animation="border" variant="primary"/>
+                </div>
+                : <PaymentTable data={payments}/>}
+
             </div>
-        )
-    }*/
+
+            : <Error/>
+    );
 }
+
 export default AccountantPage;
