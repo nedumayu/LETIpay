@@ -12,7 +12,8 @@ export default class Navbar extends Component {
             <div className="my-footer">
                 <div className="footer-left">
                     <img className="footer-logo" src={BlueLogo} alt="logo"/>
-                    <p className="footer-language">RU <span className="footer-lan-en">EN</span></p>
+                    {/*<p className="footer-language">RU <span className="footer-lan-en">EN</span></p>*/}
+                    <p className="footer-language">@2021 LETIpay</p>
                 </div>
                 <div className="footer-right">
                     <div className="footer-adress"><p>Санкт-Петербург, ул. Профессора Попова, 5</p>

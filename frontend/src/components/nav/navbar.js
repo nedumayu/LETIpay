@@ -112,16 +112,16 @@ export default class Navbar extends Component {
                             </div>
                         )}
                         {showLeti && (
-                            <li className="nav-item">
-                                <Link to={{
-                                    pathname: "/account",
-                                    state: {
-                                        username: currentUser.username
-                                    }
-                                }} className="navigation-link">
-                                    Платежи
-                                </Link>
-                            </li>
+                                <li className="nav-item">
+                                    <Link to={{
+                                        pathname: "/account",
+                                        state: {
+                                            username: currentUser.username
+                                        }
+                                    }} className="navigation-link">
+                                        Платежи
+                                    </Link>
+                                </li>
                         )}
 
                         {currentUser ? (
