@@ -8,22 +8,16 @@ import org.example.letipay.repos.CardRepository;
 import org.example.letipay.repos.PaymentRepository;
 import org.example.letipay.repos.UserRepository;
 import org.example.letipay.securingweb.jwt.request.PayRequest;
-import org.example.letipay.securingweb.jwt.response.CardResponse;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
 import org.example.letipay.securingweb.service.exceptions.CardNotFoundException;
 import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.sql.SQLOutput;
-import java.util.List;
-
 
 @CrossOrigin(origins = "*")
 @RestController

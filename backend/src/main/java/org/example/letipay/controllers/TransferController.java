@@ -2,14 +2,11 @@ package org.example.letipay.controllers;
 
 
 import org.example.letipay.models.Card;
-import org.example.letipay.models.Payment;
 import org.example.letipay.models.Transfer;
 import org.example.letipay.models.User;
 import org.example.letipay.repos.CardRepository;
-import org.example.letipay.repos.PaymentRepository;
 import org.example.letipay.repos.TransferRepository;
 import org.example.letipay.repos.UserRepository;
-import org.example.letipay.securingweb.jwt.request.PayRequest;
 import org.example.letipay.securingweb.jwt.request.TransferRequest;
 import org.example.letipay.securingweb.jwt.response.MessageResponse;
 import org.example.letipay.securingweb.service.exceptions.UserNotFoundException;
@@ -43,11 +40,11 @@ public class TransferController {
         User user1 = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException("User with that email is not found!"));
         Card card1 = cardRepository.findByUser(user1).orElseThrow(() ->
-                        new RuntimeException("Card is not found")); //карта того кто переводит
+                        new RuntimeException("Сначала введите карту")); //карта того кто переводит
 
         User user2 = userRepository.findByTelephone(transferRequest.getTransTelephone());
         Card card2 = cardRepository.findByUser(user2).orElseThrow(() ->
-                new RuntimeException("Card is not found")); //карта получателя
+                new RuntimeException("У этого пользователя еще нет карты")); //карта получателя
 
         Transfer transfer = new Transfer(
                 transferRequest.getTransTelephone(),
