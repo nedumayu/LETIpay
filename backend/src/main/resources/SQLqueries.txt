@@ -1,0 +1,9 @@
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_LETI');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+INSERT INTO users(id, email, group_number, password, telephone, username) VALUES ('1', 'admin', '-', '$2a$10$4iugkOZ4ePxfdw9OT229N.kl9c5ff9lTRorgtuskrFa8Sbf5OccsC', '-', 'Администратор');
+INSERT INTO users(id, email, group_number, password, telephone, username) VALUES ('2', 'leti', '-', '$2a$10$oesKiy7vunpTB8KkdiSP6eojZ2afHqBm/wOzfE5RpAkfYFuem93Si', '-', 'Сотрудник бухгалтерии');
+
+INSERT INTO user_roles(user_id, role_id) VALUES('1', '3');
+INSERT INTO user_roles(user_id, role_id) VALUES('2', '2');
