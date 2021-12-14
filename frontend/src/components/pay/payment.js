@@ -72,7 +72,7 @@ export default class Payment extends Component {
                             <div>
                                 <div className="select" style={{marginTop: "20px"}}>
                                 <select name="payName" value={this.state.payData.payName} onChange={this.onChangeInput}>
-                                    <option value="" hidden disabled selected>Выберите тип оплаты</option>
+                                    <option value="" hidden disabled defaultValue="choose payment type">Выберите тип оплаты</option>
                                     <option value="Обучение" onChange={this.onChangeInput}>Обучение</option>
                                     <option value="Общежитие" onChange={this.onChangeInput}>Общежитие</option>
                                 </select>

@@ -40,7 +40,7 @@ const PayHistory = () => {
                             {pays.map(pays =>
                                 <div className="payObject" key={pays.id}>
                                     <div style={{paddingRight: "10px"}}>
-                                        <p className="payName">Оплата за {pays.payName}</p>
+                                        <p className="payName">Оплата за {pays.payName.toLowerCase()}</p>
                                         <p className="paySum">{pays.paySum} ₽</p>
                                     </div>
                                     <p className="payDate">{pays.payDate}</p>
