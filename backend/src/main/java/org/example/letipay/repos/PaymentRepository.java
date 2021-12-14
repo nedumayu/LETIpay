@@ -17,9 +17,6 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
     @Query("select p from Payment p join p.card c where c.user = :user")
     List<Payment> findPaymentByCard(User user);
 
-    @Query("select p, c from Payment p join p.card c")
-    List<Payment> findAllPayments();
-
     @Query("select new org.example.letipay.repos.dto.PaymentInfo(p.id, p.payName, p.paySum, p.payDate, u.username) " +
             "from Payment p inner join User u on (p.card=u.id)")
     List<PaymentInfo> findPaymentsAndUsers();
