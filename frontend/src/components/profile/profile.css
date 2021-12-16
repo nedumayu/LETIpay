@@ -1,0 +1,54 @@
+.profile-card {
+    width: 70%;
+    height: auto;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 100px;
+
+}
+
+.profile-info {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 2fr;
+    margin-right: 40px;
+}
+
+.avatar {
+    border: 2px solid gray;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-bottom: 30px;
+}
+
+.info-table {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.info-field-name {
+    color: #C3C2C2;
+    text-transform: uppercase;
+}
+
+.cards {
+    margin: 10px 0 0 0;
+}
+
+.add-card-button {
+    color: #05336E;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.add-card-button:hover {
+    background-color:#05336E;
+    color: white;
+}

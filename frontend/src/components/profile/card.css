@@ -1,0 +1,61 @@
+.my-card {
+    width: 310px;
+    height: 180px;
+    padding: 20px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 180px 70px;
+    gap: 20px;
+    /*background-image: url('../../assets/Card_12.png');
+    background-position: center;*/
+    /*background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);*/
+    background-image: linear-gradient(to top, #b224ef 0%, #7579ff 100%);
+    color: white;
+    font-weight: 100;
+}
+
+.my-card:hover{
+    transform: rotateY(180deg);
+    transition: 1s;
+}
+
+.my-card:not(hover){
+    transform: rotateY(0deg);
+    transition: 500ms;
+}
+
+.card-icon-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-icon {
+    width: 70px;
+}
+
+.card-cost {
+    margin: 0 ;
+    font-size: 28px;
+}
+.card-date {
+    margin: 0 0 0 auto;
+    font-size: 14px;
+}
+
+.card-owner {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+}
+
+p.card-number {
+    margin:0;
+    font-size: 14px;
+
+}

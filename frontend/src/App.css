@@ -1,0 +1,125 @@
+html, body {
+    font-size: 16px;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    letter-spacing: 0.05em;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.my-wrapper {
+    background-color: white;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.my-content {
+    height: 100%;
+    padding-top: 50px;
+    min-height: calc(100vh - 242px);
+}
+
+.message {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none !important;
+    border: 1px solid #E7E7E7;
+    background: white;
+}
+
+input::placeholder {
+    color: #828282;
+    font-size: 15px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid white;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: #F2F2F2;
+}
+
+input:hover {
+    background-color: #E7E7E7;
+}
+
+button {
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background-color: #05336E;
+    border-color: transparent;
+}
+
+button:hover {
+    background-color: #3872BD;
+}
+
+.home-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60vh;
+    width: 100vh;
+    margin: 0 auto;
+}
+
+select {
+    appearance:none;
+    outline:0;
+    border:0!important;
+    background-color: #F2F2F2;
+    flex: 1;
+    padding: 0 .5em;
+    color: rgb(119, 119, 119);
+    cursor:pointer;
+    font-size: 1em;
+}
+select::-ms-expand {
+    display: none;
+}
+.select {
+    position: relative;
+    display: flex;
+    line-height: 2.5;
+    background: #6c6a6a;
+    overflow: hidden;
+    border-radius: .25em;
+}
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #E7E7E7;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+}
+.select:hover::after {
+    color:  #3872BD;
+}
+select option {
+    background-color: #ffffff;
+    color: #3872BD;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: #E7E7E7;
+}

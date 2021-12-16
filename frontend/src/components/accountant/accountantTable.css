@@ -1,0 +1,40 @@
+.table-container {
+    width: 1200px;
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.account-table {
+    width: 100%;
+    margin: 30px auto;
+}
+
+.account-table td {
+    vertical-align: middle;
+    text-align: left;
+    padding: 15px;
+    border-bottom: thin solid lightgray;
+}
+
+.account-table thead {
+    background-color: #3872BD;
+    color: white;
+    padding: 10px;
+}
+
+thead td:first-child{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-color: transparent;
+}
+
+thead td:last-child{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-color: transparent;
+}
+
+.account-table tbody tr:hover {
+    background-color: rgba(200, 202, 204, 0.37);
+}

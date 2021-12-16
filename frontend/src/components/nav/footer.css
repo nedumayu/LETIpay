@@ -1,0 +1,61 @@
+.my-footer {
+    //flex: 0 0 auto;
+    //flex-shrink: 0;
+    //position: absolute;
+    height: 150px;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 20px 70px 0 70px;
+    background-color: #05336E;
+    color: white;
+    font-size: 14px;
+    min-width: 800px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    margin-right: 100px;
+}
+
+.footer-language {
+    color: rgba(255, 255, 255, 0.79);
+    font-size: 14px;
+}
+
+.footer-logo {
+    height: 50px;
+}
+
+.footer-right div p {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-politics {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    color: #697B92;
+}
+
+.auth {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 115px;
+}
+
+.footer-lan-en {
+    color: #697B92;
+}
