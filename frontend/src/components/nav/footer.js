@@ -1,12 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import "./footer.css"
 import BlueLogo from "../../assets/bluelogo.png"
 import {Link} from "react-router-dom";
+import StorageService from "../../services/StorageService";
+import UserService from "../../services/UserService";
 
 
-export default class Navbar extends Component {
+const Footer =()=> {
 
-    render() {
+    const [isAuth, setIsAuth] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
+
+    useEffect( () => {
+        setIsAuth(StorageService.isExist())
+        setCurrentUser(StorageService.getUser())
+    }, [isAuth])
 
         return (
             <div className="my-footer">
@@ -17,7 +25,10 @@ export default class Navbar extends Component {
                 </div>
                 <div className="footer-right">
                     <div className="footer-adress"><p>Санкт-Петербург, ул. Профессора Попова, 5</p>
+                        {isAuth ?
+                            <p>Вы вошли как пользователь {currentUser.email}</p> :
                         <p><Link to="/register" className="auth">Не получается войти в аккаунт?</Link></p>
+                            }
                     </div>
                     <div>
                         <a className="footer-politics" href="https://etu.ru/assets/files/sotrudniku/Prikazi/politika-v-otnoshenii-personalnyh-dannyh.pdf">
@@ -30,5 +41,6 @@ export default class Navbar extends Component {
                 </div>
             </div>
         );
-    }
 }
+
+export default Footer;
