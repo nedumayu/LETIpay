@@ -1,4 +1,4 @@
-package org.example.letipay.securingweb.jwt.response;
+package org.example.letipay.controllers.response;
 
 import java.util.List;
 

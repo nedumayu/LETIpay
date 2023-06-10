@@ -1,12 +1,31 @@
-package org.example.letipay.securingweb.jwt.request;
+package org.example.letipay.controllers.response;
 
-public class CardRequest {
+import org.example.letipay.models.Card;
 
+public class CardResponse {
     private String cardName;
     private String cardOwner;
     private String cardNumber;
     private String endDate;
     private int cardCheck;
+
+    public CardResponse(String cardName, String cardOwner, String cardNumber, String endDate, int cardCheck) {
+        this.cardName = cardName;
+        this.cardOwner = cardOwner;
+        this.cardNumber = cardNumber;
+        this.endDate = endDate;
+        this.cardCheck = cardCheck;
+    }
+
+    public CardResponse(Card card) {
+        this.cardName = card.getCardName();
+        this.cardOwner = card.getCardOwner();
+        this.cardNumber = card.getCardNumber();
+        this.endDate = card.getEndDate();
+        this.cardCheck = card.getCardCheck();
+    }
+
+    public CardResponse() {}
 
     public String getCardName() {
         return cardName;

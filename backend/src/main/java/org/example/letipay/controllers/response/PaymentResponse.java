@@ -1,7 +1,5 @@
-package org.example.letipay.securingweb.jwt.response;
+package org.example.letipay.controllers.response;
 
-import org.example.letipay.models.Card;
-import org.example.letipay.models.User;
 import org.example.letipay.repos.dto.PaymentInfo;
 
 import java.util.List;

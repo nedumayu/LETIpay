@@ -1,6 +1,4 @@
-package org.example.letipay.securingweb.jwt.request;
-
-import java.util.Date;
+package org.example.letipay.controllers.request;
 
 public class PayRequest {
     private String payName;

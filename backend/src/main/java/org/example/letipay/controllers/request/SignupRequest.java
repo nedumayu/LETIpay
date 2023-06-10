@@ -1,4 +1,4 @@
-package org.example.letipay.securingweb.jwt.request;
+package org.example.letipay.controllers.request;
 
 import java.util.Set;
 
